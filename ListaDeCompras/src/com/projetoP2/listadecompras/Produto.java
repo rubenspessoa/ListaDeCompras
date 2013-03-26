@@ -20,6 +20,6 @@ public class Produto implements Serializable {
 
 	public double getPreco(){}
 	
-	public void addEventoDePreco(){}
+	public void addEventoDePreco(double valor, String data){}
 	
 }
