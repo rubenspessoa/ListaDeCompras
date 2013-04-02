@@ -1,0 +1,19 @@
+PROJETO P2 - 19/03/2013 - Oraculo de listas de compras
+Alunos: Arthur Felipe, Joao Paulo Ribeiro, Rubens Pessoa e Victor Souto.
+
+Resumo: Oraculo de listas de compras
+
+Toda semana, diversos pais de familia e estudantes que estao longe de casa precisam ir no supermercado com uma lista de compras. Cada item da lista sera comprado por um determinado valor. Cada semana o pai de familia não tem ideia de quanto sera sua feira ou se ele chegar no supermercado e esquecer de levar a lista, entao ficara meio perdido, sem saber o que comprar. Este programa vai ter uma lista de itens de feira que pode ser atualizada. Com este programa, cada feira deve ser cadastrada selecionando itens cadastrados e indicando a quantidade de cada um. Depois que a feira e realizada, novos preços para os itens serao cadastrados tambem, assim, cada item tera uma serie historica com precos de itens. O programa tem dados de listas de feiras passadas e de precos de itens passados. Com esses dados historicos o programa pode usar diferentes estrategias "inteligentes" para sugerir listas de compras e prever quanto o pai de familia ira pagar por uma nova lista de compras da proxima feira.
+
+O que o usuario deseja (sua necessidade):
+
+Ter uma lista de produtos que precisa comprar, podendo marcar os produtos ja adicionados ao carrinho.
+Saber em media qual sera seu gasto para a compra.
+Receber sugestoes de diferentes listas de compras, baseado nas ultimas compras e preco, e de local de compra baseando no menor preco formado por todos os produtos juntos.
+O que mais deve ser implementado:
+
+Possibilitar que o usuario adicione produtos a lista geral.
+Armazenamento das informacoes, como um historico, das listas de compras ja criadas pelo usuario e de precos de itens passados.
+****** NAO SE ESQUECAM DE OLHAR O TRELLO. ******
+
+projetoP2
