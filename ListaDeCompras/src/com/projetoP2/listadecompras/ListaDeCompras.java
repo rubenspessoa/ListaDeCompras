@@ -1,4 +1,4 @@
-package com.projetoP2.listadecompras;
+/*package com.projetoP2.listadecompras;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ public class ListaDeCompras implements Serializable {
 	
 	/**
 	 * 
-	 */
+	 *//*
 	private static final long serialVersionUID = 3746827195217723129L;
 	String nome, data;
 	
@@ -42,3 +42,4 @@ public class ListaDeCompras implements Serializable {
 	public String toString(){}
 
 }
+*/

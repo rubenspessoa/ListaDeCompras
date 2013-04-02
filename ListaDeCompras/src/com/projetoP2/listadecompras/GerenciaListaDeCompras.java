@@ -1,4 +1,4 @@
-package com.projetoP2.listadecompras;
+/*package com.projetoP2.listadecompras;
 
 import java.util.ArrayList;
 
@@ -15,3 +15,4 @@ public class GerenciaListaDeCompras {
 	public String[] formataListasDeCompra(){} // Retorna um Array de Strings com as informacoes de todas as Listas de Compras.
 
 }
+*/

@@ -1,4 +1,4 @@
-package com.projetoP2.listadecompras;
+/*package com.projetoP2.listadecompras;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ public class Produto implements Serializable {
 	
 	/**
 	 * 
-	 */
+	 *//*
 	private static final long serialVersionUID = -2017858648084823895L;
 	
 	String nome, palavrasChave;
@@ -23,3 +23,4 @@ public class Produto implements Serializable {
 	public void addEventoDePreco(double valor, String data){}
 	
 }
+*/
