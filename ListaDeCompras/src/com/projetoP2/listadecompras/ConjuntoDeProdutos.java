@@ -1,5 +1,5 @@
 package com.projetoP2.listadecompras;
-/* Rubens Viado */
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
