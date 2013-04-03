@@ -70,7 +70,8 @@ public class ListaActivity extends Activity {
             public int getCount() {
                 return produtos.length;
             }
-        };
+        };// Fim ArrayAdapter
+        
         lista.setAdapter(adapter);
 	}
 	@Override
