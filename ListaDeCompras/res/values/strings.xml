@@ -6,5 +6,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_lista">ListaActivity</string>
     <string name="title_activity_cadastrar_produto">Cadastrar Produto</string>
+    <string name="title_activity_lista_de_produtos">Lista de Produtos</string>
 
 </resources>

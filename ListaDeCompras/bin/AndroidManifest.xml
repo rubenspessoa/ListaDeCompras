@@ -30,6 +30,10 @@
             android:name="com.projetoP2.listadecompras.CadastrarProduto"
             android:label="@string/title_activity_cadastrar_produto" >
         </activity>
+        <activity
+            android:name="com.projetoP2.listadecompras.ListaDeProdutos"
+            android:label="@string/title_activity_lista_de_produtos" >
+        </activity>
     </application>
 
 </manifest>

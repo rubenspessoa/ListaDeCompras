@@ -1,16 +1,10 @@
 package com.projetoP2.listadecompras;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
+import android.view.*;
+import android.view.View.OnClickListener;
 import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -43,7 +37,18 @@ public class MainActivity extends Activity {
 			}
 			
 		});
+		
 		Button adicionar = (Button) findViewById(R.activity_main.buttonAdicionar);
+		adicionar.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				/*
+				 * Ir para a activivty de criar uma nova lista
+				 */
+				
+			}
+		});
 		
 		
 	}
@@ -61,7 +66,12 @@ public class MainActivity extends Activity {
 	      	case R.id.adicionar_produto:
 	        	Intent intent = new Intent(MainActivity.this,CadastrarProduto.class);
 	        	startActivity(intent);
-		  } 
+	        	break;
+	      	case R.id.lista_de_produto:
+	      		Intent intent2 = new Intent(MainActivity.this,ListaDeProdutos.class);
+	        	startActivity(intent2);
+	        	break;
+		} 
 	    	
 		return super.onOptionsItemSelected(item);
 	}
