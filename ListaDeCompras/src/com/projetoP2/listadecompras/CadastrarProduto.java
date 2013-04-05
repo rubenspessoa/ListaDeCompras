@@ -32,9 +32,9 @@ public class CadastrarProduto extends Activity {
 					local = (EditText) findViewById(R.activity_cadastrar_produto.edtxLocal);
 					
 					/*
-				 * Cria um produto com as informações coletadas da activity e adiciona o produto a lista geral, depois salva
-				 * o estado da lista de produtos no arquivo txt.
-				 */
+					 * Cria um produto com as informações coletadas da activity e adiciona o produto a lista geral, depois salva
+					 * o estado da lista de produtos no arquivo txt.
+					 */
 				} catch(NumberFormatException e){
 					AlertDialog.Builder dialogo = new AlertDialog.Builder(CadastrarProduto.this);
 					dialogo.setTitle("Ops!");

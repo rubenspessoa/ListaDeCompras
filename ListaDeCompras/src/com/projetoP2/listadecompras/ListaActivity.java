@@ -1,7 +1,10 @@
 package com.projetoP2.listadecompras;
 
+import java.io.IOException;
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.*;
 import android.widget.*;
 
@@ -78,7 +81,20 @@ public class ListaActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.lista, menu);
+		
 		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+	      	case R.id.excluir:
+	      		/*
+	      		 * Exclui a lista de compras
+	      		 */
+		  } 
+	    	
+		return super.onOptionsItemSelected(item);
 	}
 
 }
