@@ -1,8 +1,13 @@
 package com.projetoP2.listadecompras;
 
+import java.io.IOException;
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
+import android.util.Log;
 import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.*;
@@ -43,15 +48,57 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				/*
-				 * Ir para a activivty de criar uma nova lista
-				 */
+				ExibeDialog();
 				
 			}
 		});
+
+	}
+	
+	private void ExibeDialog() {
+		final Dialog dialog = new Dialog(this);
+		dialog.setContentView(R.layout.dialog_add_lista);
+	
+		dialog.setTitle("Adicionar nota");
 		
+		final EditText nomeLista = (EditText) dialog.findViewById(R.dialog_add_lista.nomeLista);
+
+		
+		final Button confirmar = (Button) dialog.findViewById(R.dialog_add_lista.btn_Confirmar);
+		confirmar.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				try {
+					/*
+					 * Adicionar lista ao conjunto de listas
+					 */
+					onStart();
+					dialog.dismiss();
+				} catch(IllegalArgumentException e){
+					AlertDialog.Builder dialogo = new AlertDialog.Builder(MainActivity.this);
+					dialogo.setTitle("Ops!");
+					dialogo.setMessage("Necessario entrar com o nome da lista");
+					dialogo.setNeutralButton("OK", null);
+					dialogo.show();
+				}
+			}
+		});
+		
+		final Button cancelar = (Button) dialog.findViewById(R.dialog_add_lista.btn_Cancelar);
+		cancelar.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				//finaliza o dialog
+				dialog.dismiss();
+			}
+		});
+		//exibe o dialog	
+		dialog.show();
 		
 	}
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

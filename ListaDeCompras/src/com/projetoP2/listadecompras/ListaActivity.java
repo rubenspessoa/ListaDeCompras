@@ -92,7 +92,11 @@ public class ListaActivity extends Activity {
 	      		/*
 	      		 * Exclui a lista de compras
 	      		 */
-		  } 
+	      	case R.id.addNaLista:
+	      		/*
+	      		 * Adiciona produto a lista atual
+	      		 */
+		} 
 	    	
 		return super.onOptionsItemSelected(item);
 	}
