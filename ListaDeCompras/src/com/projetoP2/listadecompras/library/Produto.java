@@ -47,6 +47,26 @@ public class Produto implements Serializable {
                 this.valor = valor;
                 this.data = data;
         }
+
+		public String getNome() {
+			return nome;
+		}
+
+		public void setNome(String nome) {
+			this.nome = nome;
+		}
+
+		public String getLocal() {
+			return local;
+		}
+
+		public void setLocal(String local) {
+			this.local = local;
+		}
+
+		public void setValor(double valor) {
+			this.valor = valor;
+		}
         
         
 }

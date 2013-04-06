@@ -7,6 +7,7 @@ import com.projetoP2.listadecompras.library.Produto;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.util.Log;
 import android.view.*;
 import android.view.View.OnClickListener;
@@ -42,16 +43,18 @@ public class CadastrarProduto extends Activity {
 					Produto produto = new Produto(nomeProduto,localVenda,precoProduto);
 					MainActivity.gerencia.add(produto);
 					
+					
 					try {
 						doc.salvarConjunto(MainActivity.gerencia);
+						Toast.makeText(getApplicationContext(), produto.getNome() + " adicionado!", Toast.LENGTH_SHORT).show();
 					} catch (IOException e) {
 						Log.d("Bosta", e.getMessage());
 					}
 					
-					/*
-					 * Cria um produto com as informações coletadas da activity e adiciona o produto a lista geral, depois salva
-					 * o estado da lista de produtos no arquivo txt.
-					 */
+					Intent intent = new Intent(CadastrarProduto.this, MainActivity.class);
+					startActivity(intent);
+					CadastrarProduto.this.finish();
+				
 				} catch(NumberFormatException e){
 					AlertDialog.Builder dialogo = new AlertDialog.Builder(CadastrarProduto.this);
 					dialogo.setTitle("Ops!");
