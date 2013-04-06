@@ -10,31 +10,31 @@ public class Produto implements Serializable {
          */
         private static final long serialVersionUID = -2017858648084823895L;
         
-        String nome, descricao, data;
+        String nome, local, data;
         double valor;
         ArrayList<EventoDePreco> eventosDePreco = new ArrayList<EventoDePreco>();
  
-        public Produto(String nome, String descricao, double valor) {
+        public Produto(String nome, String local, double valor) {
                 this.nome = nome;
-                this.descricao = descricao;
+                this.local = local;
                 this.valor = valor;
         }
  
-        public Produto onCreate(String nome, String descricao, double valor){
-                return new Produto(nome, descricao, valor);
+        public Produto onCreate(String nome, String local, double valor){
+                return new Produto(nome, local, valor);
         }
         
         public Produto read(){
                 return this;
         }
         
-        public void update(String descricao, double valor){
-                this.descricao = descricao;
+        public void update(String local, double valor){
+                this.local = local;
                 this.valor = valor;
         }
         
         public void onDelete(){
-                this.descricao = null;
+                this.local = null;
                 this.valor = 0.0;
         }
         
@@ -47,4 +47,6 @@ public class Produto implements Serializable {
                 this.valor = valor;
                 this.data = data;
         }
+        
+        
 }

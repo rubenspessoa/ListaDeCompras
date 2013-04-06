@@ -7,7 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.*;
 import android.widget.*;
-
+//Lista de compras atual
 public class ListaActivity extends Activity {
 	private String[] produtos = new String[] {"Produto A", "Produto B", "Produto C"};
 	

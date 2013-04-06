@@ -2,6 +2,8 @@ package com.projetoP2.listadecompras;
 
 import java.io.IOException;
 
+import com.projetoP2.listadecompras.library.GerenciarListas;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,6 +16,9 @@ import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class MainActivity extends Activity {
+	Documento doc = Documento.getInstance(this);
+	static GerenciarListas gerencia;
+	String FILENAME = "conjunto.txt";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +31,16 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onStart() {
 		super.onStart();
+		
+		if (gerencia == null){
+			gerencia = new GerenciarListas();
+		}
+		try {
+			gerencia = doc.carregarDocumento();
+		} catch (Exception e) {
+			//Log.d("OPs", e.getMessage());
+		}
+		
 		String[] nomesDasListas = new String[]{"Lista A","Lista B","Lista C"};
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>( this ,android.R.layout. simple_list_item_1 , nomesDasListas); 
 		
