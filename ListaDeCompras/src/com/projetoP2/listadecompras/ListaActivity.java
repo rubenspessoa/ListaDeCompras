@@ -1,14 +1,13 @@
 package com.projetoP2.listadecompras;
 
-import java.io.IOException;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.Intent;
 import android.view.*;
 import android.widget.*;
 //Lista de compras atual
 public class ListaActivity extends Activity {
+	//Nomes dos produtos que compõem a lista.
 	private String[] produtos = new String[] {"Produto A", "Produto B", "Produto C"};
 	
 	@Override
@@ -42,7 +41,8 @@ public class ListaActivity extends Activity {
 	            // Definindo um "valor" para o checkbox
 	            chc.setTag(produto);
 	 
-	            /** Definindo uma ação ao clicar no checkbox. Aqui poderiamos inserior o metodo para alterar
+	            /*
+	             *  Definindo uma ação ao clicar no checkbox. Aqui poderiamos inserior o metodo para alterar
 	             * o valor do produto.
 	             */
 	            chc.setOnClickListener(new View.OnClickListener() {

@@ -1,7 +1,4 @@
 package com.projetoP2.listadecompras;
-
-import java.io.IOException;
-
 import com.projetoP2.listadecompras.library.GerenciarListas;
 
 import android.os.Bundle;
@@ -9,7 +6,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
-import android.util.Log;
 import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.*;
@@ -53,6 +49,19 @@ public class MainActivity extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				Intent intent = new Intent(MainActivity.this,ListaActivity.class);
+				/*
+				for (int i = 0; i < ;i++){
+					String str = lista.getItemAtPosition(arg2).toString();
+					String comparador = gerencia.listasDeCompras.get(i).getNome();
+					
+					if (str.equals(comparador)){
+						intent.putExtra("nome", gerencia.listasDeCompras.get(i).getNome());
+						startActivity(inte);
+					}
+				}
+				intent.putExtra("nome", gerencia.disciplinas.get(i).getNome());
+				*/
+				
 				startActivity(intent);
 			}
 			
@@ -74,7 +83,7 @@ public class MainActivity extends Activity {
 		final Dialog dialog = new Dialog(this);
 		dialog.setContentView(R.layout.dialog_add_lista);
 	
-		dialog.setTitle("Adicionar nota");
+		dialog.setTitle("Adicionar lista");
 		
 		final EditText nomeLista = (EditText) dialog.findViewById(R.dialog_add_lista.nomeLista);
 

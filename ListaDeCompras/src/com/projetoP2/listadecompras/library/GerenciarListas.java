@@ -9,8 +9,12 @@ public class GerenciarListas implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -8857382174325365137L;
-	ArrayList<Produto> listaDeProdutos = new ArrayList<Produto>();
 	
+	ArrayList<Produto> listaDeProdutos = new ArrayList<Produto>();
+	ArrayList<ListaDeCompras> listasDeCompras = new ArrayList<ListaDeCompras>();
+	/*
+	 * PRODUTOS
+	 */
 	public void add(Produto p){
 		this.listaDeProdutos.add(p);
 	}
@@ -27,7 +31,13 @@ public class GerenciarListas implements Serializable{
     	
     	return nomes;
     }
-	/*ArrayList<ListaDeCompras> listasDeCompra = new ArrayList<ListaDeCompras>();
+	
+	/*
+	 * LISTAS DE COMPRAS
+	 */
+	
+	
+	/*
 	
 	public void add(ListaDeCompras lista){}
 	

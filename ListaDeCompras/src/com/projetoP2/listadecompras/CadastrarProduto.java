@@ -43,7 +43,6 @@ public class CadastrarProduto extends Activity {
 					Produto produto = new Produto(nomeProduto,localVenda,precoProduto);
 					MainActivity.gerencia.add(produto);
 					
-					
 					try {
 						doc.salvarConjunto(MainActivity.gerencia);
 						Toast.makeText(getApplicationContext(), produto.getNome() + " adicionado!", Toast.LENGTH_SHORT).show();
