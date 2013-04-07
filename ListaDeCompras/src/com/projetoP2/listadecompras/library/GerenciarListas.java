@@ -12,6 +12,7 @@ public class GerenciarListas implements Serializable{
 	
 	ArrayList<Produto> listaDeProdutos = new ArrayList<Produto>();
 	ArrayList<ListaDeCompras> listasDeCompras = new ArrayList<ListaDeCompras>();
+	
 	/*
 	 * PRODUTOS
 	 */
@@ -31,6 +32,15 @@ public class GerenciarListas implements Serializable{
     	
     	return nomes;
     }
+
+	public ArrayList<Produto> getListaDeProdutos() {
+		return listaDeProdutos;
+	}
+
+	public void setListaDeProdutos(ArrayList<Produto> listaDeProdutos) {
+		this.listaDeProdutos = listaDeProdutos;
+	}
+	
 	
 	/*
 	 * LISTAS DE COMPRAS

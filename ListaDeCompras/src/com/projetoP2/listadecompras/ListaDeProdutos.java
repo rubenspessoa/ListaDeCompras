@@ -6,23 +6,26 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
 public class ListaDeProdutos extends Activity {
-
+	String[] nomesDosProdutos = MainActivity.gerencia.nomesProdutos();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_lista_de_produtos);
+	
 	}
 	
 	@Override
 	protected void onStart() {
 		super.onStart();
 		
-		String[] nomesDosProdutos = MainActivity.gerencia.nomesProdutos();
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>( this ,android.R.layout. simple_list_item_1 , nomesDosProdutos);
 		ListView lista = (ListView) findViewById(R.activity_lista_de_produtos.listProdutos);
 		lista.setAdapter(adapter);
@@ -34,6 +37,23 @@ public class ListaDeProdutos extends Activity {
 			public void onClick(View v) {
 				Intent intent = new Intent(ListaDeProdutos.this,CadastrarProduto.class);
 	        	startActivity(intent);
+			}
+		});
+		
+		lista.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				Intent intent = new Intent(ListaDeProdutos.this,ProdutoActivity.class);
+				
+				for (int i = 0; i< nomesDosProdutos.length;i++){
+					if(nomesDosProdutos[arg2].equals(MainActivity.gerencia.getListaDeProdutos().get(i).getNome())){
+						intent.putExtra("index", i);
+						break;
+					}
+				}
+				startActivity(intent);
 			}
 		});
 	}

@@ -34,6 +34,10 @@
             android:name="com.projetoP2.listadecompras.ListaDeProdutos"
             android:label="@string/title_activity_lista_de_produtos" >
         </activity>
+        <activity
+            android:name="com.projetoP2.listadecompras.ProdutoActivity"
+            android:label="@string/title_activity_produto" >
+        </activity>
     </application>
 
 </manifest>

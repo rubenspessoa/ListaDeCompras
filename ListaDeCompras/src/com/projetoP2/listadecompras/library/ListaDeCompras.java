@@ -1,15 +1,16 @@
 package com.projetoP2.listadecompras.library;
-/*package com.projetoP2.listadecompras;
+
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ListaDeCompras implements Serializable {
-	
+
 	/**
 	 * 
-	 *//*
-	private static final long serialVersionUID = 3746827195217723129L;
+	 */
+	private static final long serialVersionUID = -4851367961472402839L;
+	/*
 	String nome, data;
 	
 	ArrayList<Produto> listaDeProdutos = new ArrayList<Produto>();
@@ -41,6 +42,5 @@ public class ListaDeCompras implements Serializable {
 	
 	@Override
 	public String toString(){}
-
+	*/
 }
-*/
