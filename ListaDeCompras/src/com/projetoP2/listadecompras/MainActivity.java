@@ -37,10 +37,10 @@ public class MainActivity extends Activity {
 			//Log.d("OPs", e.getMessage());
 		}
 		
-		String[] nomesDasListas = new String[]{"Lista A","Lista B","Lista C"};
+		String[] nomesDasListas = gerencia.nomesDasListas();
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>( this ,android.R.layout. simple_list_item_1 , nomesDasListas); 
 		
-		ListView lista = (ListView) findViewById(R.activity_main.listListasDeCompras);
+		final ListView lista = (ListView) findViewById(R.activity_main.listListasDeCompras);
 		lista.setAdapter(adapter);
 		
 		lista.setOnItemClickListener(new OnItemClickListener() {
@@ -49,20 +49,17 @@ public class MainActivity extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				Intent intent = new Intent(MainActivity.this,ListaActivity.class);
-				/*
-				for (int i = 0; i < ;i++){
+				
+				for (int i = 0; i < gerencia.getListasDeCompras().size();i++){
 					String str = lista.getItemAtPosition(arg2).toString();
-					String comparador = gerencia.listasDeCompras.get(i).getNome();
+					String comparador = gerencia.getListasDeCompras().get(i).getNome();
 					
 					if (str.equals(comparador)){
-						intent.putExtra("nome", gerencia.listasDeCompras.get(i).getNome());
-						startActivity(inte);
+						intent.putExtra("nome", gerencia.getListasDeCompras().get(i).getNome());
+						startActivity(intent);
 					}
 				}
-				intent.putExtra("nome", gerencia.disciplinas.get(i).getNome());
-				*/
 				
-				startActivity(intent);
 			}
 			
 		});

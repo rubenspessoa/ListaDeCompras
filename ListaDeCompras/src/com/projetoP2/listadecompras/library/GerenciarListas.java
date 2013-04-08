@@ -12,6 +12,8 @@ public class GerenciarListas implements Serializable{
 	
 	ArrayList<Produto> listaDeProdutos = new ArrayList<Produto>();
 	ArrayList<ListaDeCompras> listasDeCompras = new ArrayList<ListaDeCompras>();
+
+	
 	
 	/*
 	 * PRODUTOS
@@ -20,7 +22,7 @@ public class GerenciarListas implements Serializable{
 		this.listaDeProdutos.add(p);
 	}
 	
-	public void delete(int index){
+	public void deleteProduto(int index){
 		this.listaDeProdutos.remove(index);
 	}
 	
@@ -41,20 +43,34 @@ public class GerenciarListas implements Serializable{
 		this.listaDeProdutos = listaDeProdutos;
 	}
 	
-	
 	/*
 	 * LISTAS DE COMPRAS
 	 */
 	
+	public void add(ListaDeCompras lista){
+		this.listasDeCompras.add(lista);
+	}
 	
-	/*
+	public void deleteLista(int index){
+		this.listasDeCompras.remove(index);
+	}
 	
-	public void add(ListaDeCompras lista){}
-	
-	public void remove(ListaDeCompras lista){}
-	
-	public void procura(ListaDeCompras lista){}
-	
-	public String[] formataListasDeCompra(){} // Retorna um Array de Strings com as informacoes de todas as Listas de Compras.*/
+	// Retorna um Array de Strings com as informacoes de todas as Listas de Compras.
+	public String[] nomesDasListas(){
+		String[] nomes = new String[listasDeCompras.size()];
+    	for (int i = 0;i<listaDeProdutos.size();i++ ){
+    		nomes[i] = listasDeCompras.get(i).nome;
+    	}
+    	
+    	return nomes;
+	}
 
+	public ArrayList<ListaDeCompras> getListasDeCompras() {
+		return listasDeCompras;
+	}
+
+	public void setListasDeCompras(ArrayList<ListaDeCompras> listasDeCompras) {
+		this.listasDeCompras = listasDeCompras;
+	}
+	
 }
