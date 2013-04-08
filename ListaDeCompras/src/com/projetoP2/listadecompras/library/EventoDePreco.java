@@ -1,7 +1,7 @@
 package com.projetoP2.listadecompras.library;
 
 import java.io.Serializable;
-
+import java.util.Date;
 public class EventoDePreco implements Serializable{
 	
 	/**
@@ -9,23 +9,23 @@ public class EventoDePreco implements Serializable{
 	 */
 	private static final long serialVersionUID = 2469973788231849455L;
 	
-	String data, estabelecimento; //Generico (Implementar mais cuidadosamente depois :P)
+	String estabelecimento; //Generico (Implementar mais cuidadosamente depois :P)
 	double valor;
-	
+	Date data;
 
-	public EventoDePreco(String data, String estabelecimento, double valor) {
+	public EventoDePreco(Date data, String estabelecimento, double valor) {
 		this.data = data;
 		this.estabelecimento = estabelecimento;
 		this.valor = valor;
 	}
 
 
-	public String getData() {
-		return data;
+	public Date getData() {
+		return this.data;
 	}
 
 
-	public void setData(String data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 
