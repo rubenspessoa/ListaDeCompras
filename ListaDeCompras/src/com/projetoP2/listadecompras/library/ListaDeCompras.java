@@ -24,7 +24,7 @@ public class ListaDeCompras implements Serializable {
 	public void adicionarProduto(Produto produto){
 		if (listaDeProdutos.contains(produto)){
 			for (int i=0; i< this.listaDeProdutos.size(); i++){
-				if (listaDeProdutos.get(i) == produto);{
+				if (listaDeProdutos.get(i) == produto){
 					listaDeProdutos.get(i).addUnidade();
 					break;
 				}
