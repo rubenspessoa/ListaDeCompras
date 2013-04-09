@@ -77,6 +77,7 @@ public final class R {
         public static final int activity_produto=0x7f030004;
         public static final int dialog_add_lista=0x7f030005;
         public static final int item_produto=0x7f030006;
+        public static final int selecionar_produto=0x7f030007;
     }
     public static final class menu {
         public static final int cadastrar_produto=0x7f070000;

@@ -1,6 +1,7 @@
 package com.projetoP2.listadecompras;
 import com.projetoP2.listadecompras.library.GerenciarListas;
 import com.projetoP2.listadecompras.library.ListaDeCompras;
+import com.projetoP2.listadecompras.library.Produto;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -32,10 +33,12 @@ public class ListaActivity extends Activity {
 		Intent intent = getIntent();
 		String nomeLista = intent.getExtras().getString("nome");
 		
+		
 		for (int i = 0; i < gerencia.getListasDeCompras().size(); i++) {
 			
 			if (gerencia.getListasDeCompras().get(i).getNome().equals(nomeLista)){
 				listaCompra = gerencia.getListasDeCompras().get(i);
+				listaCompra.add(new Produto("ABC","XYZ",5.2));
 			}
 			
 		}

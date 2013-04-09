@@ -60,8 +60,12 @@ public class ListaDeCompras implements Serializable {
 	public String[] getNomeProdutos(){
 		
 		String[] nomeProdutos = new String[mapaDeProdutos.size()];
-		
-		Produto[] produtos = (Produto[]) mapaDeProdutos.keySet().toArray();
+		Object[] teste = mapaDeProdutos.keySet().toArray();
+		Produto[] produtos = new Produto[mapaDeProdutos.keySet().size()]; 
+				
+		for(int i = 0; i < mapaDeProdutos.keySet().size(); i++){
+			produtos[i] = (Produto) teste[i];
+		}
 		
 		for (int i = 0; i < nomeProdutos.length; i++) {
 			nomeProdutos[i] = produtos[i].getNome();
@@ -73,9 +77,13 @@ public class ListaDeCompras implements Serializable {
 	public double[] getValorProdutos(){
 		
 		double[] valorProdutos = new double[mapaDeProdutos.size()];
-		
-		Produto[] produtos = (Produto[]) mapaDeProdutos.values().toArray();
-		
+		Object[] teste = mapaDeProdutos.keySet().toArray();
+		Produto[] produtos = new Produto[mapaDeProdutos.values().size()]; 
+				
+		for(int i = 0; i < mapaDeProdutos.values().size(); i++){
+			produtos[i] = (Produto) teste[i];
+		}
+				
 		for (int i = 0; i < valorProdutos.length; i++) {
 			valorProdutos[i] = produtos[i].getValor();
 		}

@@ -58,7 +58,7 @@ public class GerenciarListas implements Serializable{
 	
 	String[] nomes = new String[listasDeCompras.size()];
     	
-	for (int i = 0;i<listaDeProdutos.size();i++ ){
+	for (int i = 0;i < listasDeCompras.size();i++ ){
     		nomes[i] = listasDeCompras.get(i).nome;
     	}
     	

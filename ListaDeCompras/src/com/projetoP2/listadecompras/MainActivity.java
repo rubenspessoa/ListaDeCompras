@@ -1,11 +1,15 @@
 package com.projetoP2.listadecompras;
+import java.io.IOException;
+
 import com.projetoP2.listadecompras.library.GerenciarListas;
+import com.projetoP2.listadecompras.library.ListaDeCompras;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.util.Log;
 import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.*;
@@ -15,6 +19,7 @@ public class MainActivity extends Activity {
 	Documento doc = Documento.getInstance(this);
 	static GerenciarListas gerencia;
 	String FILENAME = "conjunto.txt";
+	ListView lista;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,19 +33,20 @@ public class MainActivity extends Activity {
 	protected void onStart() {
 		super.onStart();
 		
-		if (gerencia == null){
-			gerencia = new GerenciarListas();
-		}
+		
 		try {
 			gerencia = doc.carregarDocumento();
 		} catch (Exception e) {
 			//Log.d("OPs", e.getMessage());
 		}
+		if (gerencia == null){
+			gerencia = new GerenciarListas();
+		}
 		
 		String[] nomesDasListas = gerencia.nomesDasListas();
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>( this ,android.R.layout. simple_list_item_1 , nomesDasListas); 
 		
-		final ListView lista = (ListView) findViewById(R.activity_main.listListasDeCompras);
+		lista = (ListView) findViewById(R.activity_main.listListasDeCompras);
 		lista.setAdapter(adapter);
 		
 		lista.setOnItemClickListener(new OnItemClickListener() {
@@ -82,18 +88,23 @@ public class MainActivity extends Activity {
 	
 		dialog.setTitle("Adicionar lista");
 		
-		final EditText nomeLista = (EditText) dialog.findViewById(R.dialog_add_lista.nomeLista);
 
-		
 		final Button confirmar = (Button) dialog.findViewById(R.dialog_add_lista.btn_Confirmar);
 		confirmar.setOnClickListener(new View.OnClickListener() {
-			
+			EditText nomeLista;
 			@Override
 			public void onClick(View arg0) {
 				try {
-					/*
-					 * Adicionar lista ao conjunto de listas
-					 */
+					nomeLista = (EditText) dialog.findViewById(R.dialog_add_lista.nomeLista);
+					gerencia.add(new ListaDeCompras(nomeLista.getText().toString()));
+					
+					try {
+						doc.salvarConjunto(MainActivity.gerencia);
+						Toast.makeText(getApplicationContext(), nomeLista.getText().toString() + " adicionado!", Toast.LENGTH_SHORT).show();
+					} catch (IOException e) {
+						Log.d("Bosta", e.getMessage());
+					}
+					
 					onStart();
 					dialog.dismiss();
 				} catch(IllegalArgumentException e){
