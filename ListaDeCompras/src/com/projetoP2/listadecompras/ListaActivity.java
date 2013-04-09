@@ -1,4 +1,9 @@
 package com.projetoP2.listadecompras;
+import java.io.IOException;
+import java.io.StreamCorruptedException;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.projetoP2.listadecompras.library.GerenciarListas;
 import com.projetoP2.listadecompras.library.ListaDeCompras;
 import com.projetoP2.listadecompras.library.Produto;
@@ -6,12 +11,13 @@ import com.projetoP2.listadecompras.library.Produto;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.*;
+import android.view.View.OnClickListener;
 import android.widget.*;
 //Lista de compras atual
 public class ListaActivity extends Activity {
 	//Nomes dos produtos que compõem a lista.
-	GerenciarListas gerencia;
 	Documento doc = Documento.getInstance(this);
 	ListaDeCompras listaCompra;
 	@Override
@@ -23,22 +29,20 @@ public class ListaActivity extends Activity {
 	@Override
 	protected void onStart() {
 		super.onStart();
-
-		ListView lista = (ListView) findViewById(R.activity_lista.listProdutos);
 		
 		try {
-			gerencia = doc.carregarDocumento();
-		
 		
 		Intent intent = getIntent();
 		String nomeLista = intent.getExtras().getString("nome");
 		
 		
-		for (int i = 0; i < gerencia.getListasDeCompras().size(); i++) {
+		for (int i = 0; i < MainActivity.gerencia.getListasDeCompras().size(); i++) {
 			
-			if (gerencia.getListasDeCompras().get(i).getNome().equals(nomeLista)){
-				listaCompra = gerencia.getListasDeCompras().get(i);
-				listaCompra.add(new Produto("ABC","XYZ",5.2));
+			if (MainActivity.gerencia.getListasDeCompras().get(i).getNome().equals(nomeLista)){
+				listaCompra = MainActivity.gerencia.getListasDeCompras().get(i);
+				if (listaCompra.getNomeProdutos().length == 0){
+					addProdutos();
+				}
 			}
 			
 		}
@@ -57,6 +61,7 @@ public class ListaActivity extends Activity {
                 new String[] {"nome", "valor"},
                 new int[] {android.R.id.text1,
                            android.R.id.text2})*/
+		ListView lista = (ListView) findViewById(R.activity_lista.listProdutos);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1){
 			 
 			@Override
@@ -115,6 +120,7 @@ public class ListaActivity extends Activity {
         };// Fim ArrayAdapter
         
         lista.setAdapter(adapter);
+        
 		} catch(Exception e){
 			
 		}
@@ -135,12 +141,99 @@ public class ListaActivity extends Activity {
 	      		 * Exclui a lista de compras
 	      		 */
 	      	case R.id.addNaLista:
-	      		/*
-	      		 * Adiciona produto a lista atual
-	      		 */
+	      		addProdutos();
+	      		break;
 		} 
 	    	
 		return super.onOptionsItemSelected(item);
 	}
-
+	
+	public void addProdutos(){
+		setContentView(R.layout.selecionar_produto);
+		ListView list = (ListView) findViewById(R.selecionar_produto.listItens);
+		
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1){
+			 
+			@Override
+			public View getView(int position, View convertView, ViewGroup parent) {
+				// Recupera o produto selecionado de acordo com a sua posição no ListView
+				String nomeProduto = MainActivity.gerencia.nomesProdutos()[position];
+				// Se o ConvertView for diferente de null o layout ja foi "inflado"
+				View v = convertView;
+					if(v==null) {
+					// "Inflando" o layout do item caso o memso ainda nao tenha sido feito
+					LayoutInflater inflater = getLayoutInflater();
+					v = (View) inflater.inflate(R.layout.item_produto, null);
+				}
+				
+				// Recuperando o checkbox
+	            CheckBox chc = (CheckBox) v.findViewById(R.item_produto.chcproduto);
+	 
+	            // Definindo um "valor" para o checkbox
+	            chc.setTag(nomeProduto);
+	 
+	            /*
+	             *  Definindo uma ação ao clicar no checkbox. Aqui poderiamos inserior o metodo para alterar
+	             * o valor do produto.
+	             */
+	            chc.setOnClickListener(new View.OnClickListener() {
+		            @Override
+		            public void onClick(View v) {
+		                CheckBox chk = (CheckBox) v;
+		                String produto = (String) chk.getTag();
+		                if(chk.isChecked()) {
+		                	for (int i = 0;i < MainActivity.gerencia.getListaDeProdutos().size();i++){
+		                		if(MainActivity.gerencia.getListaDeProdutos().get(i).getNome().equals(produto)){
+		                			listaCompra.add(MainActivity.gerencia.getListaDeProdutos().get(i));
+		                			Toast.makeText(getApplicationContext(), produto +" adicionado", Toast.LENGTH_SHORT).show();
+		                		}
+		                	}
+		                	
+		                } else {
+		                	for (int i = 0;i < MainActivity.gerencia.getListaDeProdutos().size();i++){
+		                		if(MainActivity.gerencia.getListaDeProdutos().get(i).getNome().equals(produto)){
+		                			listaCompra.removerProduto(i);
+		                			Toast.makeText(getApplicationContext(), produto +" removido", Toast.LENGTH_SHORT).show();
+		                		}
+		                	}
+		                }
+		            }
+	            });
+	            
+	            Button adicionar = (Button) findViewById(R.selecionar_produto.buttonAdd);
+	            adicionar.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						
+						try {
+							setContentView(R.layout.activity_lista);
+							doc.salvarConjunto(MainActivity.gerencia);
+							Toast.makeText(getApplicationContext(), "Lista atualizada!", Toast.LENGTH_SHORT).show();
+						} catch (IOException e) {
+							Log.d("Erro", e.getMessage());
+						}
+					}
+				});
+	            
+	            
+	            TextView txt = (TextView) v.findViewById(R.item_produto.txtproduto);
+	            txt.setText(nomeProduto);
+	            TextView txt2 = (TextView) v.findViewById(R.item_produto.txtpreco);
+	            txt2.setText(" ");
+	            return v;
+			}
+			 @Override
+	            public long getItemId(int position) {
+	                return position;
+	            }
+	 
+	            @Override
+	            public int getCount() {
+	                return MainActivity.gerencia.getListaDeProdutos().size();
+	            }
+		};
+		
+		list.setAdapter(adapter);
+	}
 }

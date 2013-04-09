@@ -86,6 +86,10 @@ public final class R {
         public static final int main=0x7f070003;
         public static final int produto=0x7f070004;
     }
+    public static final class selecionar_produto {
+        public static final int buttonAdd=0x7f100001;
+        public static final int listItens=0x7f100000;
+    }
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
