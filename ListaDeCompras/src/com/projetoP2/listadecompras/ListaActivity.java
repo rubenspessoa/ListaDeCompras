@@ -5,6 +5,8 @@ import com.projetoP2.listadecompras.library.ListaDeCompras;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.util.Log;
 import android.view.*;
@@ -49,11 +51,11 @@ public class ListaActivity extends Activity {
 		
 		ListView lista = (ListView) findViewById(R.activity_lista.listProdutos);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1){
-			 
+			String nomeProduto;
 			@Override
 			public View getView(int position, View convertView, ViewGroup parent) {
 				// Recupera o produto selecionado de acordo com a sua posição no ListView
-				String nomeProduto = listaCompra.getNomeProdutos()[position];
+				nomeProduto = listaCompra.getNomeProdutos()[position];
 				String valorProduto = String.format("%.2f",listaCompra.getValorProdutos()[position]);
 				// Se o ConvertView for diferente de null o layout ja foi "inflado"
 				View v = convertView;
@@ -86,11 +88,24 @@ public class ListaActivity extends Activity {
 		            }
 	            });
 	            
+	            
 	            TextView txt = (TextView) v.findViewById(R.item_produto.txtproduto);
 	            txt.setText(nomeProduto);
 	            TextView txt2 = (TextView) v.findViewById(R.item_produto.txtpreco);
 	            txt2.setText(valorProduto);
-	 
+	            
+	            txt.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						for (int i = 0; i < MainActivity.gerencia.getListaDeProdutos().size(); i++) {
+							if (MainActivity.gerencia.getListaDeProdutos().get(i).getNome().equals(nomeProduto)){
+								ExibeDialog(i);
+							}	
+						}
+					}
+				});
+	            
 	            return v;
             }
  
@@ -110,6 +125,60 @@ public class ListaActivity extends Activity {
 		} catch(Exception e){
 			
 		}
+	}
+	
+	private void ExibeDialog(final int index) {
+		final Dialog dialog = new Dialog(this);
+		dialog.setContentView(R.layout.dialog_atualizar_preco);
+	
+		dialog.setTitle("Atualizar preço");
+		
+
+		Button btn = (Button) dialog.findViewById(R.dialog_atualizar_preco.btn_Confirmar);
+		btn.setOnClickListener(new OnClickListener() {
+			
+
+			EditText preco = (EditText) dialog.findViewById(R.dialog_atualizar_preco.preco);
+			EditText local = (EditText) dialog.findViewById(R.dialog_atualizar_preco.localDeVenda);
+			
+			@Override
+			public void onClick(View arg0) {
+				try {
+					double precoAtual = Double.parseDouble(preco.getText().toString());
+					String estabelecimento = local.getText().toString();
+					MainActivity.gerencia.getListaDeProdutos().get(index).addEventoDePreco(Double.parseDouble(preco.getText().toString()), estabelecimento);
+					try {	
+						doc.salvarConjunto(MainActivity.gerencia);
+						Toast.makeText(getApplicationContext(), "Produto atualizado!", Toast.LENGTH_SHORT).show();
+						setContentView(R.layout.activity_lista);
+						onStart();
+					} catch (IOException e) {
+						Log.d("Erro", e.getMessage());
+					}
+					
+					dialog.dismiss();
+				} catch(IllegalArgumentException e){
+					AlertDialog.Builder dialogo = new AlertDialog.Builder(ListaActivity.this);
+					dialogo.setTitle("Ops!");
+					dialogo.setMessage("Necessario entrar com as informações");
+					dialogo.setNeutralButton("OK", null);
+					dialogo.show();
+				}
+			}
+		});
+		
+		final Button cancelar = (Button) dialog.findViewById(R.dialog_atualizar_preco.btn_Cancelar);
+		cancelar.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				//finaliza o dialog
+				dialog.dismiss();
+			}
+		});
+		//exibe o dialog	
+		dialog.show();
+		
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -204,8 +273,7 @@ public class ListaActivity extends Activity {
 					@Override
 					public void onClick(View v) {
 						
-						try {
-							
+						try {	
 							doc.salvarConjunto(MainActivity.gerencia);
 							Toast.makeText(getApplicationContext(), "Lista atualizada!", Toast.LENGTH_SHORT).show();
 							setContentView(R.layout.activity_lista);

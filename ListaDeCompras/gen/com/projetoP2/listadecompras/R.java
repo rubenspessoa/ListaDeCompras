@@ -36,6 +36,12 @@ public final class R {
         public static final int btn_Confirmar=0x7f0e0001;
         public static final int nomeLista=0x7f0e0000;
     }
+    public static final class dialog_atualizar_preco {
+        public static final int btn_Cancelar=0x7f0f0003;
+        public static final int btn_Confirmar=0x7f0f0002;
+        public static final int localDeVenda=0x7f0f0000;
+        public static final int preco=0x7f0f0001;
+    }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
@@ -65,9 +71,9 @@ public final class R {
         public static final int textView4=0x7f080002;
     }
     public static final class item_produto {
-        public static final int chcproduto=0x7f0f0001;
-        public static final int txtpreco=0x7f0f0002;
-        public static final int txtproduto=0x7f0f0000;
+        public static final int chcproduto=0x7f100001;
+        public static final int txtpreco=0x7f100002;
+        public static final int txtproduto=0x7f100000;
     }
     public static final class layout {
         public static final int activity_cadastrar_produto=0x7f030000;
@@ -76,8 +82,9 @@ public final class R {
         public static final int activity_main=0x7f030003;
         public static final int activity_produto=0x7f030004;
         public static final int dialog_add_lista=0x7f030005;
-        public static final int item_produto=0x7f030006;
-        public static final int selecionar_produto=0x7f030007;
+        public static final int dialog_atualizar_preco=0x7f030006;
+        public static final int item_produto=0x7f030007;
+        public static final int selecionar_produto=0x7f030008;
     }
     public static final class menu {
         public static final int cadastrar_produto=0x7f070000;
@@ -87,8 +94,8 @@ public final class R {
         public static final int produto=0x7f070004;
     }
     public static final class selecionar_produto {
-        public static final int buttonAdd=0x7f100001;
-        public static final int listItens=0x7f100000;
+        public static final int buttonAdd=0x7f110001;
+        public static final int listItens=0x7f110000;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
