@@ -1,12 +1,7 @@
 package com.projetoP2.listadecompras;
 import java.io.IOException;
-import java.io.StreamCorruptedException;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.projetoP2.listadecompras.library.GerenciarListas;
 import com.projetoP2.listadecompras.library.ListaDeCompras;
-import com.projetoP2.listadecompras.library.Produto;
+
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -15,11 +10,13 @@ import android.util.Log;
 import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.*;
+
 //Lista de compras atual
 public class ListaActivity extends Activity {
 	//Nomes dos produtos que compõem a lista.
 	Documento doc = Documento.getInstance(this);
 	ListaDeCompras listaCompra;
+	String nomeLista;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,7 +30,7 @@ public class ListaActivity extends Activity {
 		try {
 		
 		Intent intent = getIntent();
-		String nomeLista = intent.getExtras().getString("nome");
+		nomeLista = intent.getExtras().getString("nome");
 		
 		
 		for (int i = 0; i < MainActivity.gerencia.getListasDeCompras().size(); i++) {
@@ -49,18 +46,7 @@ public class ListaActivity extends Activity {
 		
 		setTitle(nomeLista);
 		
-		/*List<Map<String, String>> data = new ArrayList<Map<String, String>>();
-		for (int i = 0;i < listaCompra.getNomeProdutos().length;i++) {
-		    Map<String, String> datum = new HashMap<String, String>(2);
-		    datum.put("nome", listaCompra.getNomeProdutos()[i]);
-		    datum.put("valor", String.format("%.2f",listaCompra.getValorProdutos()[i]));
-		    data.add(datum);
-		}
-		SimpleAdapter adapter = new SimpleAdapter(this, data,
-                android.R.layout.simple_list_item_2,
-                new String[] {"nome", "valor"},
-                new int[] {android.R.id.text1,
-                           android.R.id.text2})*/
+		
 		ListView lista = (ListView) findViewById(R.activity_lista.listProdutos);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1){
 			 
@@ -136,10 +122,22 @@ public class ListaActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-	      	case R.id.excluir:
-	      		/*
-	      		 * Exclui a lista de compras
-	      		 */
+	      	case R.id.excluirLista:
+	      		for (int i = 0; i < MainActivity.gerencia.getListasDeCompras().size(); i++) {
+	    			if (MainActivity.gerencia.getListasDeCompras().get(i).getNome().equals(nomeLista)){
+	    				MainActivity.gerencia.deleteLista(i);
+	    				try {
+							doc.salvarConjunto(MainActivity.gerencia);
+							Toast.makeText(getApplicationContext(), "Lista excluida", Toast.LENGTH_SHORT).show();
+							Intent intent = new Intent(ListaActivity.this, MainActivity.class);
+		    				startActivity(intent);
+						} catch (IOException e) {
+							Log.d("Erro", e.getMessage());
+						}
+	    				
+	    			}
+	    			
+	    		}
 	      	case R.id.addNaLista:
 	      		addProdutos();
 	      		break;
@@ -151,7 +149,7 @@ public class ListaActivity extends Activity {
 	public void addProdutos(){
 		setContentView(R.layout.selecionar_produto);
 		ListView list = (ListView) findViewById(R.selecionar_produto.listItens);
-		
+		setTitle("Adicionar itens a lista");
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1){
 			 
 			@Override
@@ -207,9 +205,11 @@ public class ListaActivity extends Activity {
 					public void onClick(View v) {
 						
 						try {
-							setContentView(R.layout.activity_lista);
+							
 							doc.salvarConjunto(MainActivity.gerencia);
 							Toast.makeText(getApplicationContext(), "Lista atualizada!", Toast.LENGTH_SHORT).show();
+							setContentView(R.layout.activity_lista);
+							onStart();
 						} catch (IOException e) {
 							Log.d("Erro", e.getMessage());
 						}

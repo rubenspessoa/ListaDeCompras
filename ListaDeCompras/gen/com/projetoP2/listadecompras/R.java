@@ -57,7 +57,7 @@ public final class R {
         public static final int action_settings=0x7f080006;
         public static final int addNaLista=0x7f080008;
         public static final int adicionar_produto=0x7f080009;
-        public static final int excluir=0x7f080007;
+        public static final int excluirLista=0x7f080007;
         public static final int lista_de_produto=0x7f08000a;
         public static final int textView1=0x7f080000;
         public static final int textView2=0x7f080001;
