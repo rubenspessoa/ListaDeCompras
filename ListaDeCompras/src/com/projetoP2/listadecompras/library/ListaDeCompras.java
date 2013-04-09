@@ -1,21 +1,21 @@
 package com.projetoP2.listadecompras.library;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Date;
+import java.util.Set;
 
 public class ListaDeCompras implements Serializable {
 
 	/**
 	 * 
 	 */
-	
 	private static final long serialVersionUID = -4851367961472402839L;
 	
 	String nome;
 	Date data;
 	LinkedHashMap<Produto, Integer> mapaDeProdutos = new LinkedHashMap<Produto, Integer>();
-	
 	double valorDaListaDeProdutos;
 
 	public ListaDeCompras (String nome) {
@@ -23,71 +23,66 @@ public class ListaDeCompras implements Serializable {
 		this.data = new Date();
 	}
 	
-<<<<<<< HEAD
-	public void adicionarProduto(Produto produto){
-		if (listaDeProdutos.contains(produto)){
-			for (int i=0; i< this.listaDeProdutos.size(); i++){
-				if (listaDeProdutos.get(i) == produto){
-					listaDeProdutos.get(i).addUnidade();
-					break;
-				}
-			}
-		}else{
-			listaDeProdutos.add(produto);
-		}
-=======
 	public void add(Produto produto){
-		listaDeProdutos.add(produto);
->>>>>>> Atualizando Produto, ListaDeCompras, EventoDePreco.
+		mapaDeProdutos.put(produto, 1);
 		updateValorDaLista();
-		updateDate();
 	}
 	
 	public void removerProduto(int indice){
-		listaDeProdutos.remove(indice);
+		mapaDeProdutos.remove(indice);
 		updateValorDaLista();
-		updateDate();
 	}
 	
 	private void updateValorDaLista(){
 		double valorTotal = 0;
 		
-		for (Produto produto : listaDeProdutos) {
-			valorTotal += produto.getValor();
+		for (Produto produto : mapaDeProdutos.keySet()) {
+			valorTotal += produto.getValor() * mapaDeProdutos.get(produto); // valor total eh igual ao valor do produto vezes a quantidade de produtos na lista.
 		}
 		
 		this.valorDaListaDeProdutos = valorTotal;
-		// Aperfeicoar posteriormente...
 	}
 	
 	public double getValorDaLista(){
-		return this.valorDaListaDeProdutos;
-	} 
+		return valorDaListaDeProdutos;
+	}
 	
-	public void setValorDaListaDeProdutos(double novovalor){
-		this.valorDaListaDeProdutos = novovalor;
-	} // Sera que faz sentido um set para ValorDaListaDeProdutos, se a variavel depende totalmetne do valor dos produtos ?
-	
+	public void setValorEmProduto(Produto produto, double valor, String estabelecimento){
+		produto.addEventoDePreco(valor, estabelecimento);
+	}
+
+	public LinkedHashMap<Produto, Integer> getMapaDeProdutos() {
+		return mapaDeProdutos;
+	}
 	
 	public String getNome(){
 		return this.nome;
 	}
 	
-	public void setNome(String novoNome){
-		this.nome = novoNome;
-		updateDate();
-	}
-	public void setValorEmProduto(Produto produto, double valor){
-		produto.addEventoDePreco(valor, new Date());
+	public String[] getNomeProdutos(){
+		
+		String[] nomeProdutos = new String[mapaDeProdutos.size()];
+		
+		Produto[] produtos = (Produto[]) mapaDeProdutos.keySet().toArray();
+		
+		for (int i = 0; i < nomeProdutos.length; i++) {
+			nomeProdutos[i] = produtos[i].getNome();
+		}
+		
+		return nomeProdutos ;
 	}
 	
-	public void updateDate(){
-		this.data = new Date();
-		// PEGA A DATA ATUAL E ATUALIZA A VARIAVEL DATA PARA A ULTIMA VEZ EM QUE A LISTA FOR ATUALIZADA.
-	}
-
-	public ArrayList<Produto> getListaDeProdutos() {
-		return listaDeProdutos;
+	public double[] getValorProdutos(){
+		
+		double[] valorProdutos = new double[mapaDeProdutos.size()];
+		
+		Produto[] produtos = (Produto[]) mapaDeProdutos.values().toArray();
+		
+		for (int i = 0; i < valorProdutos.length; i++) {
+			valorProdutos[i] = produtos[i].getValor();
+		}
+		
+		return valorProdutos;
 	}
 	
 }
