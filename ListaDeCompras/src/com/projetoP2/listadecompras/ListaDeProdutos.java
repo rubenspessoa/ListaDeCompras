@@ -12,7 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 /**
- * Tela de lista de produtos, exibe todos os produtos existentes no sistema.
+ * (Activity)Tela de lista de produtos, exibe todos os produtos existentes no sistema.
  * @author Arthur Felipe, Joao Paulo Ribeiro, Rubens Pessoa, Victor Souto
  *
  */

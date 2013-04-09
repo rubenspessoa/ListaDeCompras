@@ -3,7 +3,11 @@ package com.projetoP2.listadecompras.library;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Date;
-
+/**
+ * Classe que cria e edita uma Lista de Compras
+ * @author Arthur Felipe, Joao Paulo Ribeiro, Rubens Pessoa, Victor Souto
+ *
+ */
 public class ListaDeCompras implements Serializable {
 
 	/**
@@ -20,17 +24,27 @@ public class ListaDeCompras implements Serializable {
 		this.nome = nome;
 		this.data = new Date();
 	}
-	
+	/**
+	 * Adiciona um produto a lista de compras
+	 * @param produto
+	 */
 	public void add(Produto produto){
 		mapaDeProdutos.put(produto, 1);
 		updateValorDaLista();
 	}
 	
+	/**
+	 * Remove um produto da lista de compras
+	 * @param indice
+	 */
 	public void removerProduto(int indice){
 		mapaDeProdutos.remove(indice);
 		updateValorDaLista();
 	}
 	
+	/**
+	 * Retorna o valor total da lista de compras
+	 */
 	private void updateValorDaLista(){
 		double valorTotal = 0;
 		
@@ -56,7 +70,10 @@ public class ListaDeCompras implements Serializable {
 	public String getNome(){
 		return this.nome;
 	}
-	
+	/**
+	 * 
+	 * @return Array de string com os nomes de todos os produtos na lista de compras
+	 */
 	public String[] getNomeProdutos(){
 		
 		String[] nomeProdutos = new String[mapaDeProdutos.size()];
@@ -74,6 +91,10 @@ public class ListaDeCompras implements Serializable {
 		return nomeProdutos ;
 	}
 	
+	/**
+	 * 
+	 * @return um Array de double com todos os preços dos produtos da lista de compras.
+	 */
 	public double[] getValorProdutos(){
 		
 		double[] valorProdutos = new double[mapaDeProdutos.size()];

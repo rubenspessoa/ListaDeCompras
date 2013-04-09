@@ -11,7 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.*;
 
 /**
- * Lista de compras sendo utilizada no momento
+ * (Activity)Lista de compras sendo utilizada no momento
  * @author Arthur Felipe, Joao Paulo Ribeiro, Rubens Pessoa, Victor Souto
  *
  */

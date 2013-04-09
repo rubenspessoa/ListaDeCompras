@@ -2,7 +2,11 @@ package com.projetoP2.listadecompras.library;
 
 import java.io.Serializable;
 import java.util.LinkedList;
-
+/**
+ * Classe que cria e edita um produto.
+ * @author Arthur Felipe, Joao Paulo Ribeiro, Rubens Pessoa, Victor Souto
+ *
+ */
 public class Produto implements Serializable {
     
         /**
@@ -30,7 +34,11 @@ public class Produto implements Serializable {
                 this.valor = 0.0;
                 eventosDePreco.removeAll(eventosDePreco);
         }
-        
+        /**
+         * Adiciona um evento de preco ao produto
+         * @param valor do produto
+         * @param estabelecimento local onde foi encontrado
+         */
 		public void addEventoDePreco(double valor, String estabelecimento){
 			this.eventosDePreco.add(new EventoDePreco(valor, estabelecimento));
 			

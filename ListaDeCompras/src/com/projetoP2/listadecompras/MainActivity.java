@@ -114,7 +114,7 @@ public class MainActivity extends Activity {
 				} catch(IllegalArgumentException e){
 					AlertDialog.Builder dialogo = new AlertDialog.Builder(MainActivity.this);
 					dialogo.setTitle("Ops!");
-					dialogo.setMessage("Adicione um nome a lista.");
+					dialogo.setMessage("Lista já existente.");
 					dialogo.setNeutralButton("OK", null);
 					dialogo.show();
 				} 

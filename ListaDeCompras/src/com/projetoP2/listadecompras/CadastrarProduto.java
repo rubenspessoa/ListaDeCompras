@@ -13,7 +13,7 @@ import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.*;
 /**
- * Tela de cadastro de novos produtos.
+ * (Activity)Tela de cadastro de novos produtos.
  * @author Arthur Felipe, Joao Paulo Ribeiro, Rubens Pessoa, Victor Souto
  *
  */
@@ -42,8 +42,7 @@ public class CadastrarProduto extends Activity {
 					double precoProduto = Double.parseDouble(preco.getText().toString());
 					local = (EditText) findViewById(R.activity_cadastrar_produto.edtxLocal);
 					String localVenda = local.getText().toString();
-					
-					
+
 					Produto produto = new Produto(nomeProduto,localVenda,precoProduto);
 					
 					MainActivity.gerencia.add(produto);

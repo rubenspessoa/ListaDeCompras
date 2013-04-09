@@ -7,7 +7,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.widget.*;
-
+/**
+ * (Activity) Tela que mostra a situacao atual de um produto
+ * @author Arthur Felipe, Joao Paulo Ribeiro, Rubens Pessoa, Victor Souto
+ *
+ */
 public class ProdutoActivity extends Activity {
 	TextView preco, local;
 	@Override

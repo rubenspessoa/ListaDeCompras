@@ -2,7 +2,11 @@ package com.projetoP2.listadecompras.library;
 
 import java.io.Serializable;
 import java.util.Date;
-
+/**
+ * Evento de preco de um produto, determina e atualiza o local e preco que o produto foi comprado
+ * @author Arthur Felipe, Joao Paulo Ribeiro, Rubens Pessoa, Victor Souto
+ *
+ */
 public class EventoDePreco implements Serializable{
 	
 	/**

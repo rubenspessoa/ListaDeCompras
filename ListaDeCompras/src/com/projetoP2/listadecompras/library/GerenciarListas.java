@@ -3,7 +3,11 @@ package com.projetoP2.listadecompras.library;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
+/**
+ * Gerencia a lista de todos os produtos cadastrados no aplicativo e as listas criadas pelo usuario.
+ * @author Arthur Felipe, Joao Paulo Ribeiro, Rubens Pessoa, Victor Souto
+ *
+ */
 public class GerenciarListas implements Serializable {
 	
 	/**
@@ -18,20 +22,34 @@ public class GerenciarListas implements Serializable {
 	 * PRODUTOS
 	 */
 	
+	/**
+	 * Adiciona um produto a lista de todos os produtos cadastrados.
+	 * @param p produto
+	 * @throws IllegalArgumentException O produto ja existe
+	 */
 	public void add(Produto p) throws IllegalArgumentException {
-		for (Produto produto : listaDeProdutos) {
-			if (produto.getNome().equals(p.getNome())){
-				throw new IllegalArgumentException("O produto ja existe.");
-			} else {
-				listaDeProdutos.add(p);
+		if (listaDeProdutos.size() > 0){
+			for (int i = 0; i < listaDeProdutos.size(); i++) {
+				if (listaDeProdutos.get(i).getNome().equals(p.getNome())){
+					throw new IllegalArgumentException("O produto ja existe.");
+				}
 			}
-		}
+		} 
+		this.listaDeProdutos.add(p);
+		
 	}
 	
+	/**
+	 * Deleta um produto da lista de todos os produtos cadastrados.
+	 * @param index posicao do produto na lista de produtos.
+	 */
 	public void deleteProduto(int index){
 		this.listaDeProdutos.remove(index);
 	}
-	
+	/**
+	 * 
+	 * @return Os nomes de todos os produtos cadastrados.
+	 */
 	public String[] nomesProdutos(){
 		
     	String[] nomes = new String[listaDeProdutos.size()];
@@ -42,7 +60,7 @@ public class GerenciarListas implements Serializable {
     	
     	return nomes;
     }
-
+	
 	public ArrayList<Produto> getListaDeProdutos() {
 		return listaDeProdutos;
 	}
@@ -50,28 +68,41 @@ public class GerenciarListas implements Serializable {
 	/*
 	 * LISTAS DE COMPRAS
 	 */
-	
+	/**
+	 * Adiciona um lista de compras a lista de todos as listas de compras.
+	 * @param lista de compras
+	 * @throws IllegalArgumentException Uma lista com este mesmo nome ja existe.
+	 */
 	public void add(ListaDeCompras lista) throws IllegalArgumentException {
-		for (ListaDeCompras forEachLista : listasDeCompras) {
-			if (forEachLista.getNome().equals(lista.getNome())){
-				throw new IllegalArgumentException("Uma lista com este mesmo nome ja existe.");
-			} else {
-				listasDeCompras.add(lista);
+		if (listasDeCompras.size() > 0){
+			for (int i = 0; i < listasDeCompras.size(); i++) {
+				if (listasDeCompras.get(i).getNome().equals(lista.getNome())){
+					throw new IllegalArgumentException("Uma lista com este mesmo nome ja existe.");
+				}
 			}
 		}
+		this.listasDeCompras.add(lista);
+
+		
 	}
-	
+	/**
+	 * Deleta uma lista da lista de todas as listas de compras.
+	 * @param index posicao da lista na lista de todas as listas de compras.
+	 */
 	public void deleteLista(int index){
 		this.listasDeCompras.remove(index);
 	}
 	
-	// Retorna um Array de Strings com o nome de todas as Listas de Compras.
+	/**
+	 * Retorna um Array de Strings com o nome de todas as Listas de Compras.
+	 * @return nome de todas as listas de compras.
+	 */
 	public String[] nomesDasListas(){
 	
 	String[] nomes = new String[listasDeCompras.size()];
     	
 	for (int i = 0;i < listasDeCompras.size();i++ ) {
-    		nomes[i] = listasDeCompras.get(i).getNome();
+    		nomes[i] = listasDeCompras.get(i).nome;
     	}
     	
     	return nomes;

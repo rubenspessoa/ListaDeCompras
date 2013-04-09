@@ -1,4 +1,9 @@
 package com.projetoP2.listadecompras.library;
+
+/**
+ *  CLASSE PARA CRIAR PRODUTOS QUE VIRAO JA PRE-CADASTRADOS NO APLICATIVO
+ */
+
 /*package com.projetoP2.listadecompras;
 
 import java.io.Serializable;

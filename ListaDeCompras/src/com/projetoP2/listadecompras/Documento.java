@@ -10,7 +10,12 @@ import java.io.StreamCorruptedException;
 import com.projetoP2.listadecompras.library.GerenciarListas;
 
 import android.content.Context;
-
+/**
+ * Criar, salva e edita um arquivo onde é armazenado(Persistencia de dados) das informações do aplicativo. Salva o estado
+ * de todos os objetos do aplicativo.
+ * @author Arthur Felipe, Joao Paulo Ribeiro, Rubens Pessoa, Victor Souto
+ *
+ */
 public class Documento {
 	public static Documento documento = null;
 	private ObjectInputStream object;
@@ -30,6 +35,13 @@ public class Documento {
 		return documento;
 		
 	}
+	/**
+	 * Carrega as informações do documento e retorna o Objeto com seu estado recuperado.
+	 * @return GerenciarListas, o Objeto com seu estado recuperado.
+	 * @throws StreamCorruptedException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public GerenciarListas carregarDocumento() throws StreamCorruptedException, IOException, ClassNotFoundException{
 		FileInputStream file = context.openFileInput(FILENAME);
 		object = new ObjectInputStream(file);
@@ -40,7 +52,11 @@ public class Documento {
 		return conjunto;
 		
 	}
-	
+	/**
+	 * Salva o estado dos objetos do aplicativo.
+	 * @param gerencia Obejeto do tipo GerenciarListas 
+	 * @throws IOException
+	 */
 	public void salvarConjunto(GerenciarListas gerencia) throws IOException{
 		FileOutputStream file = context.openFileOutput(FILENAME, Context.MODE_PRIVATE);
 		obj = new ObjectOutputStream(file);
