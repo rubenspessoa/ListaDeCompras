@@ -26,7 +26,7 @@ public class ProdutoActivity extends Activity {
 		preco = (TextView) findViewById(R.activity_produto.preco);
 		preco.setText(String.format("%.2f", p.getValor()));
 		local = (TextView) findViewById(R.activity_produto.local);
-		local.setText(p.getLocal());
+		local.setText(p.getEstabelecimento());
 		
 		
 		
