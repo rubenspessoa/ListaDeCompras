@@ -12,7 +12,11 @@ import android.util.Log;
 import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.*;
-
+/**
+ * Tela de cadastro de novos produtos.
+ * @author Arthur Felipe, Joao Paulo Ribeiro, Rubens Pessoa, Victor Souto
+ *
+ */
 public class CadastrarProduto extends Activity {
 	EditText nome, preco,local;
 	Documento doc = Documento.getInstance(this);
@@ -41,6 +45,7 @@ public class CadastrarProduto extends Activity {
 					
 					
 					Produto produto = new Produto(nomeProduto,localVenda,precoProduto);
+					
 					MainActivity.gerencia.add(produto);
 					
 					try {
@@ -58,6 +63,12 @@ public class CadastrarProduto extends Activity {
 					AlertDialog.Builder dialogo = new AlertDialog.Builder(CadastrarProduto.this);
 					dialogo.setTitle("Ops!");
 					dialogo.setMessage("É necessario todas informações.");
+					dialogo.setNeutralButton("OK", null);
+					dialogo.show();
+				} catch(IllegalArgumentException e2){
+					AlertDialog.Builder dialogo = new AlertDialog.Builder(CadastrarProduto.this);
+					dialogo.setTitle("Ops!");
+					dialogo.setMessage("Já existe um produto com este nome.");
 					dialogo.setNeutralButton("OK", null);
 					dialogo.show();
 				}

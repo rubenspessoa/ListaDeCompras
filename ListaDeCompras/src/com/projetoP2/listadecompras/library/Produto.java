@@ -32,7 +32,7 @@ public class Produto implements Serializable {
         }
         
 		public void addEventoDePreco(double valor, String estabelecimento){
-			eventosDePreco.add(new EventoDePreco(valor, estabelecimento));
+			this.eventosDePreco.add(new EventoDePreco(valor, estabelecimento));
 			
         }
 		

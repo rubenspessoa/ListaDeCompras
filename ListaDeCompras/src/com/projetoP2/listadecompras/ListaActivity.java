@@ -2,18 +2,19 @@ package com.projetoP2.listadecompras;
 import java.io.IOException;
 import com.projetoP2.listadecompras.library.ListaDeCompras;
 
-
 import android.os.Bundle;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
+import android.app.*;
 import android.content.Intent;
 import android.util.Log;
 import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.*;
 
-//Lista de compras atual
+/**
+ * Lista de compras sendo utilizada no momento
+ * @author Arthur Felipe, Joao Paulo Ribeiro, Rubens Pessoa, Victor Souto
+ *
+ */
 public class ListaActivity extends Activity {
 	//Nomes dos produtos que compõem a lista.
 	Documento doc = Documento.getInstance(this);
@@ -91,18 +92,18 @@ public class ListaActivity extends Activity {
 	            
 	            TextView txt = (TextView) v.findViewById(R.item_produto.txtproduto);
 	            txt.setText(nomeProduto);
+	            txt.setTag(nomeProduto);
 	            TextView txt2 = (TextView) v.findViewById(R.item_produto.txtpreco);
 	            txt2.setText(valorProduto);
 	            
-	            txt.setOnClickListener(new OnClickListener() {
+	            txt.setOnClickListener(new View.OnClickListener() {
 					
 					@Override
 					public void onClick(View v) {
-						for (int i = 0; i < MainActivity.gerencia.getListaDeProdutos().size(); i++) {
-							if (MainActivity.gerencia.getListaDeProdutos().get(i).getNome().equals(nomeProduto)){
-								ExibeDialog(i);
-							}	
-						}
+						TextView tx =(TextView) v;
+						String nome = (String) tx.getTag();
+						ExibeDialog(nome);
+						Toast.makeText(getApplicationContext(), nome + " selecionado", Toast.LENGTH_SHORT).show();
 					}
 				});
 	            
@@ -126,18 +127,21 @@ public class ListaActivity extends Activity {
 			
 		}
 	}
-	
-	private void ExibeDialog(final int index) {
+	int index;
+	private void ExibeDialog(String nome) {
 		final Dialog dialog = new Dialog(this);
 		dialog.setContentView(R.layout.dialog_atualizar_preco);
-	
 		dialog.setTitle("Atualizar preço");
 		
-
+		for (int i = 0; i < MainActivity.gerencia.nomesProdutos().length; i++) {
+			if (MainActivity.gerencia.nomesProdutos()[i].equals(nome)){
+				index = i;
+			}	
+		}
+		
 		Button btn = (Button) dialog.findViewById(R.dialog_atualizar_preco.btn_Confirmar);
 		btn.setOnClickListener(new OnClickListener() {
 			
-
 			EditText preco = (EditText) dialog.findViewById(R.dialog_atualizar_preco.preco);
 			EditText local = (EditText) dialog.findViewById(R.dialog_atualizar_preco.localDeVenda);
 			
@@ -146,7 +150,7 @@ public class ListaActivity extends Activity {
 				try {
 					double precoAtual = Double.parseDouble(preco.getText().toString());
 					String estabelecimento = local.getText().toString();
-					MainActivity.gerencia.getListaDeProdutos().get(index).addEventoDePreco(Double.parseDouble(preco.getText().toString()), estabelecimento);
+					MainActivity.gerencia.getListaDeProdutos().get(index).addEventoDePreco(precoAtual, estabelecimento);
 					try {	
 						doc.salvarConjunto(MainActivity.gerencia);
 						Toast.makeText(getApplicationContext(), "Produto atualizado!", Toast.LENGTH_SHORT).show();

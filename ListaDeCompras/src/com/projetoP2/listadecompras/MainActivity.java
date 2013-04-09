@@ -14,7 +14,11 @@ import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
-
+/**
+ * Tela inicial, visualiza as listas de listas de compras criadas pelo usuario.
+ * @author Arthur Felipe, Joao Paulo Ribeiro, Rubens Pessoa, Victor Souto
+ *
+ */
 public class MainActivity extends Activity {
 	Documento doc = Documento.getInstance(this);
 	static GerenciarListas gerencia;
@@ -94,7 +98,7 @@ public class MainActivity extends Activity {
 			EditText nomeLista;
 			@Override
 			public void onClick(View arg0) {
-				try {
+				try{
 					nomeLista = (EditText) dialog.findViewById(R.dialog_add_lista.nomeLista);
 					gerencia.add(new ListaDeCompras(nomeLista.getText().toString()));
 					
@@ -110,10 +114,11 @@ public class MainActivity extends Activity {
 				} catch(IllegalArgumentException e){
 					AlertDialog.Builder dialogo = new AlertDialog.Builder(MainActivity.this);
 					dialogo.setTitle("Ops!");
-					dialogo.setMessage("Necessario entrar com o nome da lista");
+					dialogo.setMessage("Adicione um nome a lista.");
 					dialogo.setNeutralButton("OK", null);
 					dialogo.show();
-				}
+				} 
+				
 			}
 		});
 		
