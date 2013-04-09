@@ -27,7 +27,9 @@ public class GerenciarListas implements Serializable{
 	}
 	
 	public String[] nomesProdutos(){
+		
     	String[] nomes = new String[listaDeProdutos.size()];
+    	
     	for (int i = 0;i<listaDeProdutos.size();i++ ){
     		nomes[i] = listaDeProdutos.get(i).nome;
     	}
@@ -37,10 +39,6 @@ public class GerenciarListas implements Serializable{
 
 	public ArrayList<Produto> getListaDeProdutos() {
 		return listaDeProdutos;
-	}
-
-	public void setListaDeProdutos(ArrayList<Produto> listaDeProdutos) {
-		this.listaDeProdutos = listaDeProdutos;
 	}
 	
 	/*
@@ -57,8 +55,10 @@ public class GerenciarListas implements Serializable{
 	
 	// Retorna um Array de Strings com as informacoes de todas as Listas de Compras.
 	public String[] nomesDasListas(){
-		String[] nomes = new String[listasDeCompras.size()];
-    	for (int i = 0;i<listaDeProdutos.size();i++ ){
+	
+	String[] nomes = new String[listasDeCompras.size()];
+    	
+	for (int i = 0;i<listaDeProdutos.size();i++ ){
     		nomes[i] = listasDeCompras.get(i).nome;
     	}
     	
@@ -67,10 +67,6 @@ public class GerenciarListas implements Serializable{
 
 	public ArrayList<ListaDeCompras> getListasDeCompras() {
 		return listasDeCompras;
-	}
-
-	public void setListasDeCompras(ArrayList<ListaDeCompras> listasDeCompras) {
-		this.listasDeCompras = listasDeCompras;
 	}
 	
 }
