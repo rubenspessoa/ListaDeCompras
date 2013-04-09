@@ -1,8 +1,8 @@
 package com.projetoP2.listadecompras.library;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.LinkedList;
+
 public class Produto implements Serializable {
     
         /**
@@ -10,73 +10,49 @@ public class Produto implements Serializable {
          */
         private static final long serialVersionUID = -2017858648084823895L;
        
-        String nome, local;
-        Date data;
+        String nome, estabelecimento;
         double valor;
-        int quantidade;
-        ArrayList<EventoDePreco> eventosDePreco = new ArrayList<EventoDePreco>();
+        LinkedList<EventoDePreco> eventosDePreco = new LinkedList<EventoDePreco>();
  
-        public Produto(String nome, String local, double valor) {
+        public Produto(String nome, String estabelecimento, double valor) {
                 this.nome = nome;
-                this.local = local;
+                this.estabelecimento = estabelecimento;
                 this.valor = valor;
+                addEventoDePreco(valor, estabelecimento);
         }
  
         public Produto onCreate(String nome, String local, double valor){
                 return new Produto(nome, local, valor);
         }
         
-        public Produto read(){
-                return this;
-        }
-        
-        public void update(String local, double valor){
-                this.local = local;
-                this.valor = valor;
-        }
-        
-        public void onDelete(){
-                this.local = null;
+        public void onDelete() {
+                this.estabelecimento = null;
                 this.valor = 0.0;
+                eventosDePreco.removeAll(eventosDePreco);
+        }
+        
+		public void addEventoDePreco(double valor, String estabelecimento){
+			eventosDePreco.add(new EventoDePreco(this.valor, this.estabelecimento));
         }
 		
-        public String getLocal() {
-			return local;
-		}
-        public double getValor() {
-            return valor;
-        }
-        public double getQtd() {
-            return quantidade;
-        }
- 
 		public String getNome() {
 			return nome;
 		}
-
 		
+        public String getEstabelecimento() {
+			return eventosDePreco.getLast().getEstabelecimento();
+		}
+		
+        public double getValor() {
+        		return eventosDePreco.getLast().getValor();
+        }
 
-		public void setLocal(String local) {
-			this.local = local;
+		public void setEstabelecimento(String estabelecimento) {
+			eventosDePreco.getLast().setEstabelecimento(estabelecimento);
 		}
 
 		public void setValor(double valor) {
-			this.valor = valor;
+			eventosDePreco.getLast().setValor(valor);
 		}
 		
-		public void setQtd(int novaquantidade) {
-			this.quantidade = novaquantidade;
-		}
-		
-		public void addUnidade() {
-			this.quantidade += 1;
-		}
-		public void setNome(String nome) {
-			this.nome = nome;
-		}
-		public void addEventoDePreco(double valor, Date data){
-        	eventosDePreco.add(new EventoDePreco(new Date(), this.local, this.valor));
-        }
-
-
 }

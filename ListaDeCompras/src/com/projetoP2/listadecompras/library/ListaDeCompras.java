@@ -1,6 +1,7 @@
 package com.projetoP2.listadecompras.library;
+
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Date;
 
 public class ListaDeCompras implements Serializable {
@@ -8,19 +9,21 @@ public class ListaDeCompras implements Serializable {
 	/**
 	 * 
 	 */
+	
 	private static final long serialVersionUID = -4851367961472402839L;
 	
 	String nome;
 	Date data;
-	ArrayList<Produto> listaDeProdutos = new ArrayList<Produto>();
+	LinkedHashMap<Produto, Integer> mapaDeProdutos = new LinkedHashMap<Produto, Integer>();
 	
 	double valorDaListaDeProdutos;
 
-	public ListaDeCompras(String nome){
+	public ListaDeCompras (String nome) {
 		this.nome = nome;
-		this.data = new Date(); // ATRIBUI A PRIMEIRA DATA.
+		this.data = new Date();
 	}
 	
+<<<<<<< HEAD
 	public void adicionarProduto(Produto produto){
 		if (listaDeProdutos.contains(produto)){
 			for (int i=0; i< this.listaDeProdutos.size(); i++){
@@ -32,9 +35,14 @@ public class ListaDeCompras implements Serializable {
 		}else{
 			listaDeProdutos.add(produto);
 		}
+=======
+	public void add(Produto produto){
+		listaDeProdutos.add(produto);
+>>>>>>> Atualizando Produto, ListaDeCompras, EventoDePreco.
 		updateValorDaLista();
 		updateDate();
 	}
+	
 	public void removerProduto(int indice){
 		listaDeProdutos.remove(indice);
 		updateValorDaLista();
@@ -42,12 +50,14 @@ public class ListaDeCompras implements Serializable {
 	}
 	
 	private void updateValorDaLista(){
-		double novovalor = 0;
-		for (int i=0; i< this.listaDeProdutos.size(); i++){
-			novovalor += (listaDeProdutos.get(i).getValor() * listaDeProdutos.get(i).getQtd());
+		double valorTotal = 0;
+		
+		for (Produto produto : listaDeProdutos) {
+			valorTotal += produto.getValor();
 		}
-		this.valorDaListaDeProdutos = novovalor;
-		// Aperfeiçoar posteriormente...
+		
+		this.valorDaListaDeProdutos = valorTotal;
+		// Aperfeicoar posteriormente...
 	}
 	
 	public double getValorDaLista(){
@@ -56,7 +66,7 @@ public class ListaDeCompras implements Serializable {
 	
 	public void setValorDaListaDeProdutos(double novovalor){
 		this.valorDaListaDeProdutos = novovalor;
-	} // Será que faz sentido um set para ValorDaListaDeProdutos, se a variável depende totalmetne do valor dos produtos ?
+	} // Sera que faz sentido um set para ValorDaListaDeProdutos, se a variavel depende totalmetne do valor dos produtos ?
 	
 	
 	public String getNome(){
@@ -73,10 +83,11 @@ public class ListaDeCompras implements Serializable {
 	
 	public void updateDate(){
 		this.data = new Date();
-		//PEGA A DATA ATUAL E ATUALIZA A VARIAVEL DATA PARA A ULTIMA VEZ EM QUE A LISTA FOR ATUALIZADA.
+		// PEGA A DATA ATUAL E ATUALIZA A VARIAVEL DATA PARA A ULTIMA VEZ EM QUE A LISTA FOR ATUALIZADA.
 	}
-	@Override
-	public String toString(){
-		return ("Nome da lista: " + this.nome + "Modificada em: " + this.data.toString());
+
+	public ArrayList<Produto> getListaDeProdutos() {
+		return listaDeProdutos;
 	}
+	
 }
