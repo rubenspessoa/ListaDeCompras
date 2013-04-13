@@ -4,21 +4,30 @@ import java.io.Serializable;
 
 public class ProdutoEmUnidade extends Produto implements Medida, Serializable {
 
-	public ProdutoEmUnidade(String nome, String estabelecimento, double valor) {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -580427383168426924L;
+
+	public ProdutoEmUnidade(String nome, String estabelecimento, int quantidade, double valor) {
 		super(nome, estabelecimento, valor);
-		// TODO Auto-generated constructor stub
+		addEventoDePreco(calculaValorDaUnidadeDeMedida(quantidade, valor), estabelecimento);
 	}
 
 	@Override
 	public double calculaValor(double quantidade, double preco) {
-		// TODO Auto-generated method stub
-		return 0;
+		return quantidade * preco;
 	}
 
 	@Override
 	public double calculaValorDaUnidadeDeMedida(double quantidade, double preco) {
+		return preco/quantidade;
+	}
+
+	@Override
+	public void addEventoDePreco(double valor, String estabelecimento) {
 		// TODO Auto-generated method stub
-		return 0;
+		
 	}
 
 }

@@ -9,7 +9,7 @@ import java.util.LinkedList;
  *
  */
 
-public class Produto implements Serializable {
+public abstract class Produto implements Serializable {
     
         /**
          * 
@@ -38,9 +38,7 @@ public class Produto implements Serializable {
          * @param estabelecimento local onde foi encontrado
          */
         
-		public void addEventoDePreco(double valor, String estabelecimento){
-			this.eventosDePreco.add(new EventoDePreco(valor, estabelecimento));
-        }
+		public abstract void addEventoDePreco(double valor, String estabelecimento);
 		
 		public String getNome() {
 			return nome;

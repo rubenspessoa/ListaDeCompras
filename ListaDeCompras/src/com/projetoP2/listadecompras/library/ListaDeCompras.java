@@ -118,4 +118,15 @@ public class ListaDeCompras implements Serializable {
 		return valorProdutos;
 	}
 	
+	public Produto[] getProdutos(){
+		
+		Object[] teste = mapaDeProdutos.keySet().toArray();
+		Produto[] produtos = new Produto[mapaDeProdutos.keySet().size()]; 
+				
+		for(int i = 0; i < mapaDeProdutos.keySet().size(); i++){
+			produtos[i] = (Produto) teste[i];
+		}
+		
+		return produtos;
+	}
 }
