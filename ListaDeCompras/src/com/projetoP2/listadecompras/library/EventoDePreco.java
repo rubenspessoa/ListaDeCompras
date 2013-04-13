@@ -16,14 +16,14 @@ public class EventoDePreco implements Serializable{
 	
 
 	String estabelecimento; 
-	double valor;
+	double valorPago;
 	Date data;
 
 	public EventoDePreco(double valor, String estabelecimento) {
 		data = new Date();
 		this.estabelecimento = estabelecimento;
-		this.valor = valor;
-	}
+		this.valorPago = valor;
+	}	
 
 	public Date getData() {
 		return data;
@@ -33,16 +33,8 @@ public class EventoDePreco implements Serializable{
 		return estabelecimento;
 	}
 
-	public void setEstabelecimento(String estabelecimento) {
-		this.estabelecimento = estabelecimento;
-	}
-
 	public double getValor() {
-		return valor;
-	}
-
-	public void setValor(double valor) {
-		this.valor = valor;
+		return valorPago;
 	}
 
 	public int compareTo(Date anotherDate) {

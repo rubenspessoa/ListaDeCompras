@@ -17,7 +17,7 @@ public class ListaDeCompras implements Serializable {
 	
 	String nome;
 	Date data;
-	LinkedHashMap<Produto, Integer> mapaDeProdutos = new LinkedHashMap<Produto, Integer>();
+	LinkedHashMap<Produto, Double> mapaDeProdutos = new LinkedHashMap<Produto, Double>();
 	double valorDaListaDeProdutos;
 
 	public ListaDeCompras (String nome) {
@@ -29,7 +29,12 @@ public class ListaDeCompras implements Serializable {
 	 * @param produto
 	 */
 	public void add(Produto produto){
-		mapaDeProdutos.put(produto, 1);
+		mapaDeProdutos.put(produto, 1.0);
+		updateValorDaLista();
+	}
+	
+	public void add(Produto produto, double qtd){
+		mapaDeProdutos.put(produto, qtd);
 		updateValorDaLista();
 	}
 	
@@ -37,6 +42,7 @@ public class ListaDeCompras implements Serializable {
 	 * Remove um produto da lista de compras
 	 * @param indice
 	 */
+	
 	public void removerProduto(int indice){
 		mapaDeProdutos.remove(indice);
 		updateValorDaLista();
@@ -63,7 +69,7 @@ public class ListaDeCompras implements Serializable {
 		produto.addEventoDePreco(valor, estabelecimento);
 	}
 
-	public LinkedHashMap<Produto, Integer> getMapaDeProdutos() {
+	public LinkedHashMap<Produto, Double> getMapaDeProdutos() {
 		return mapaDeProdutos;
 	}
 	
@@ -93,7 +99,7 @@ public class ListaDeCompras implements Serializable {
 	
 	/**
 	 * 
-	 * @return um Array de double com todos os preços dos produtos da lista de compras.
+	 * @return um Array de double com todos os precos dos produtos da lista de compras.
 	 */
 	public double[] getValorProdutos(){
 		
