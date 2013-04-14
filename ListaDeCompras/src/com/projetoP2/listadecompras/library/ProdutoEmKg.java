@@ -11,6 +11,12 @@ public class ProdutoEmKg extends Produto implements Medida, Serializable {
 	
 	double ValorDaUnidadeDeMedida;
 	
+	public ProdutoEmKg(String nome, String estabelecimento, double preco) {
+		super(nome, estabelecimento, preco);
+		int qtdComprada = 1;
+		addEventoDePreco(calculaValorDaUnidadeDeMedida(qtdComprada, preco), estabelecimento);
+	}
+	
 	public ProdutoEmKg(String nome, String estabelecimento, double qtdComprada, double preco) {
 		super(nome, estabelecimento, preco);
 		addEventoDePreco(calculaValorDaUnidadeDeMedida(qtdComprada, preco), estabelecimento);
