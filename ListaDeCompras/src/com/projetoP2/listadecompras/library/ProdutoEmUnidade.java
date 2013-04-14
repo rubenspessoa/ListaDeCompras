@@ -16,12 +16,6 @@ public class ProdutoEmUnidade extends Produto implements Medida, Serializable {
 		this.quantidadeComprada = 1;
 		addEventoDePreco(quantidadeComprada, preco, estabelecimento);
 	}
-	
-	public ProdutoEmUnidade(String nome, String estabelecimento, double qtdComprada, double preco) {
-		super(nome, estabelecimento, preco);
-		this.quantidadeComprada = qtdComprada;
-		addEventoDePreco(quantidadeComprada, preco, estabelecimento);
-	}
 
 	@Override
 	public double calculaValor(double quantidade, double preco) {
@@ -36,6 +30,7 @@ public class ProdutoEmUnidade extends Produto implements Medida, Serializable {
 	@Override
 	public void addEventoDePreco(double quantidade, double valor,
 			String estabelecimento) {
+		this.quantidadeComprada = quantidade;
 		super.estabelecimento = estabelecimento;
 		super.valor = calculaValorDaUnidadeDeMedida(quantidade, valor);
 		super.eventosDePreco.add(new EventoDePreco(calculaValorDaUnidadeDeMedida(quantidade, valor), estabelecimento));	
