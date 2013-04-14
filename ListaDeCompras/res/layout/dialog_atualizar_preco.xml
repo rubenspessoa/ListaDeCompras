@@ -8,7 +8,7 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Local de venda:"
+        android:text="Onde você achou?"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
@@ -24,7 +24,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Preço do quilo ou unidade:"
+        android:text="Preço pago:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText

@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="Nome" />
+        android:text="Produto:" />
 
     <EditText
         android:id="@+activity_cadastrar_produto/edtxNome"
@@ -22,8 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView1"
-        android:ems="10"
-        android:text="Nome do produto" >
+        android:ems="10" >
 
         <requestFocus />
     </EditText>
@@ -43,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+activity_cadastrar_produto/edtxPreco"
-        android:text="Local onde vende" />
+        android:text="Onde você achou?" />
 
     <EditText
         android:id="@+activity_cadastrar_produto/edtxLocal"
@@ -51,8 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView4"
-        android:ems="10"
-        android:text="Local onde vende o produto" />
+        android:ems="10" />
 
     <Button
         android:id="@+activity_cadastrar_produto/btConfirmar"

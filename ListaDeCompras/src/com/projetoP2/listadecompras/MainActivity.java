@@ -90,7 +90,7 @@ public class MainActivity extends Activity {
 		final Dialog dialog = new Dialog(this);
 		dialog.setContentView(R.layout.dialog_add_lista);
 	
-		dialog.setTitle("Adicionar lista");
+		dialog.setTitle("Criar nova lista");
 		
 
 		final Button confirmar = (Button) dialog.findViewById(R.dialog_add_lista.btn_Confirmar);

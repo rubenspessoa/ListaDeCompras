@@ -261,8 +261,6 @@ public class ListaActivity extends Activity {
 				Button chc = (Button) v.findViewById(R.produto_add.btAdd);
 				chc.setTag(nomeProduto);
 				
-	            // Definindo um "valor" para o checkbox
-	           // chc.setTag(nomeProduto);
 	 
 	            /*
 	             *  Definindo uma ação ao clicar no checkbox. Aqui poderiamos inserior o metodo para alterar
@@ -312,7 +310,7 @@ public class ListaActivity extends Activity {
 	public void addQuantidade(String nome){
 		final Dialog dialog = new Dialog(this);
 		dialog.setContentView(R.layout.dialog_quantidade);
-		dialog.setTitle("Determinar quantidade de" + nome);
+		dialog.setTitle("Determinar quantidade de " + nome);
 		
 		for (int i = 0; i < MainActivity.gerencia.nomesProdutos().length; i++) {
 			if (MainActivity.gerencia.nomesProdutos()[i].equals(nome)){
