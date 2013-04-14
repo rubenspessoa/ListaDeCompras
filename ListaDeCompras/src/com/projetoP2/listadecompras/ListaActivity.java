@@ -59,14 +59,14 @@ public class ListaActivity extends Activity {
 			public View getView(int position, View convertView, ViewGroup parent) {
 				// Recupera o produto selecionado de acordo com a sua posição no ListView
 				nomeProduto = listaCompra.getNomeProdutos()[position];
-				Produto p;
+				Produto p = null;
 				for (int i = 0; i < listaCompra.getMapaDeProdutos().size(); i++) {
 					if (listaCompra.getNomeProdutos()[i].equals(nomeProduto)){
-					//	p = listaCompra.getMapaDeProdutos();
+						p = listaCompra.getProdutos()[i];
 					}	
 				}
 				
-				String valorProduto = String.format("%.2f",listaCompra.getValorProdutos()[position]);
+		//		String valorProduto = String.format("%.2f",listaCompra.getValorProdutos()[position]);
 				// Se o ConvertView for diferente de null o layout ja foi "inflado"
 				View v = convertView;
 					if(v==null) {
@@ -100,11 +100,10 @@ public class ListaActivity extends Activity {
 	            
 	            
 	            TextView txt = (TextView) v.findViewById(R.item_produto.txtproduto);
-	            txt.setText(nomeProduto);
+	            txt.setText(nomeProduto + " - " + listaCompra.getMapaDeProdutos().get(p));
 	            txt.setTag(nomeProduto);
 	            TextView txt2 = (TextView) v.findViewById(R.item_produto.txtpreco);
-	            txt2.setText(valorProduto);
-	            
+	          //  txt2.setText(valorProduto);
 	            txt.setOnClickListener(new View.OnClickListener() {
 					
 					@Override
@@ -160,7 +159,7 @@ public class ListaActivity extends Activity {
 				try {
 					double precoAtual = Double.parseDouble(preco.getText().toString());
 					String estabelecimento = local.getText().toString();
-					MainActivity.gerencia.getListaDeProdutos().get(index).addEventoDePreco(precoAtual, estabelecimento);
+					MainActivity.gerencia.getListaDeProdutos().get(index).addEventoDePreco(1,precoAtual, estabelecimento);
 					try {	
 						doc.salvarConjunto(MainActivity.gerencia);
 						Toast.makeText(getApplicationContext(), "Produto atualizado!", Toast.LENGTH_SHORT).show();
@@ -232,16 +231,17 @@ public class ListaActivity extends Activity {
 	/*
 	 *  Adiciona Produto
 	 */
+	
 	public void addProdutos(){
 		setContentView(R.layout.selecionar_produto);
 		ListView list = (ListView) findViewById(R.selecionar_produto.listItens);
 		setTitle("Adicionar itens a lista");
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1){
-			 
+			
 			@Override
 			public View getView(int position, View convertView, ViewGroup parent) {
 				// Recupera o produto selecionado de acordo com a sua posição no ListView
-				String nomeProduto = MainActivity.gerencia.nomesProdutos()[position];
+				final String nomeProduto = MainActivity.gerencia.nomesProdutos()[position];
 				// Se o ConvertView for diferente de null o layout ja foi "inflado"
 				View v = convertView;
 					if(v==null) {
@@ -251,9 +251,10 @@ public class ListaActivity extends Activity {
 				}
 				
 				Button chc = (Button) v.findViewById(R.produto_add.btAdd);
-	 
+				chc.setTag(nomeProduto);
+				
 	            // Definindo um "valor" para o checkbox
-	            chc.setTag(nomeProduto);
+	           // chc.setTag(nomeProduto);
 	 
 	            /*
 	             *  Definindo uma ação ao clicar no checkbox. Aqui poderiamos inserior o metodo para alterar
@@ -262,29 +263,21 @@ public class ListaActivity extends Activity {
 	            chc.setOnClickListener(new View.OnClickListener() {
 		            @Override
 		            public void onClick(View v) {
+		            	
 		               	for (int i = 0;i < MainActivity.gerencia.getListaDeProdutos().size();i++){
 		               		Button chk = (Button) v;
 			                String produto = (String) chk.getTag();
 		                	Produto pAdicionado = MainActivity.gerencia.getListaDeProdutos().get(i);
+		                	
 		                	if(pAdicionado.getNome().equals(produto)){
-		                		EditText quantidade = (EditText) v.findViewById(R.produto_add.quantidade);
-		                		double quant = Double.parseDouble(quantidade.getText().toString()); 
-		                		listaCompra.add(pAdicionado,quant);
-		                		listaCompra.getMapaDeProdutos().get(pAdicionado);
-		                		Toast.makeText(getApplicationContext(), produto +" adicionado", Toast.LENGTH_SHORT).show();
-		                		try {	
-									doc.salvarConjunto(MainActivity.gerencia);
-									Toast.makeText(getApplicationContext(), "Lista atualizada!", Toast.LENGTH_SHORT).show();
-									setContentView(R.layout.activity_lista);
-									onStart();
-								} catch (IOException e) {
-									Log.d("Erro", e.getMessage());
-								}
-		                	}
+			                	addQuantidade(nomeProduto);
+			                }
+		                
+		                	
 		                }
 		            }
 	            });
-	            
+	                
 	            TextView txt = (TextView) v.findViewById(R.produto_add.txtproduto);
 	            txt.setText(nomeProduto);
 	            TextView txt2 = (TextView) v.findViewById(R.produto_add.txtpreco);
@@ -307,4 +300,45 @@ public class ListaActivity extends Activity {
 	/*
 	 * Dialogo de quantidade de produtos que devem ser adicionados ao carrinho
 	 */
+	Produto p;
+	public void addQuantidade(String nome){
+		final Dialog dialog = new Dialog(this);
+		dialog.setContentView(R.layout.dialog_quantidade);
+		dialog.setTitle("Atualizar preço");
+		
+		for (int i = 0; i < MainActivity.gerencia.nomesProdutos().length; i++) {
+			if (MainActivity.gerencia.nomesProdutos()[i].equals(nome)){
+				p = MainActivity.gerencia.getListaDeProdutos().get(i);
+			}	
+		}
+		
+		Button confirmar = (Button) dialog.findViewById(R.dialog_quantidade.confirmar);
+		confirmar.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				try{
+	    		EditText quantidade = (EditText) dialog.findViewById(R.dialog_quantidade.quantidade);
+	    		double quant = Double.parseDouble(quantidade.getText().toString());
+	    		Toast.makeText(getApplicationContext(), p.getNome() +" adicionado", Toast.LENGTH_SHORT).show();
+	    		listaCompra.add(p,quant);
+	    		
+	    		} catch(Exception e){
+	    			Log.e("Erro", "Linha 273");
+	    		}
+	    		
+	    		try {	
+					doc.salvarConjunto(MainActivity.gerencia);
+					Toast.makeText(getApplicationContext(), "Lista atualizada!", Toast.LENGTH_SHORT).show();
+					setContentView(R.layout.activity_lista);
+					onStart();
+					dialog.dismiss();
+				} catch (IOException e) {
+					Log.d("Erro", e.getMessage());
+				}
+			}
+		});
+		dialog.show();
+		
+	}
 }

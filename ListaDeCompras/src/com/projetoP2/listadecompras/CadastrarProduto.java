@@ -43,7 +43,7 @@ public class CadastrarProduto extends Activity {
 					double precoProduto = Double.parseDouble(preco.getText().toString());
 					local = (EditText) findViewById(R.activity_cadastrar_produto.edtxLocal);
 					String localVenda = local.getText().toString();
-					produto = new ProdutoEmUnidade(nomeProduto,localVenda,1,precoProduto);
+					produto = new ProdutoEmUnidade(nomeProduto,localVenda,precoProduto);
 					
 					MainActivity.gerencia.add(produto);
 					

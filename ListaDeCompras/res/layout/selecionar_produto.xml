@@ -14,12 +14,4 @@
         android:layout_marginBottom="60dp" >
     </ListView>
 
-    <Button
-        android:id="@+selecionar_produto/buttonAdd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Atualizar" />
-
 </RelativeLayout>

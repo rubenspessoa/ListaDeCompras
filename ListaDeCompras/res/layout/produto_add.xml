@@ -10,16 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+produto_add/txtproduto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+item_produto/chcproduto"
-            android:layout_alignBottom="@+item_produto/chcproduto"
-            android:layout_alignParentLeft="true"
-            android:layout_alignRight="@+produto_add/txtpreco"
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+		<TextView
+		    android:id="@+produto_add/txtproduto"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignBaseline="@+item_produto/chcproduto"
+		    android:layout_alignBottom="@+item_produto/chcproduto"
+		    android:layout_alignParentLeft="true"
+		    android:layout_toLeftOf="@+produto_add/btAdd"
+		    android:text="Medium Text"
+		    android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+produto_add/txtpreco"
@@ -27,8 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/button1"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+item_produto/txtproduto"
-            android:layout_toLeftOf="@+produto_add/quantidade" />
+            android:layout_alignRight="@+produto_add/txtproduto"
+            android:layout_below="@+item_produto/txtproduto" />
 
         <Button
             android:id="@+produto_add/btAdd"
@@ -38,15 +38,8 @@
             android:layout_alignParentTop="true"
             android:text="Add" />
 
-        <EditText
-            android:id="@+produto_add/quantidade"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+produto_add/btAdd"
-            android:ems="10"
-            android:inputType="numberDecimal" />
-
+        
+		
     </RelativeLayout>
 
 </LinearLayout>
