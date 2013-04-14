@@ -28,14 +28,6 @@
         <requestFocus />
     </EditText>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+activity_cadastrar_produto/edtxNome"
-        android:text="Preco" />
-
     <EditText
         android:id="@+activity_cadastrar_produto/edtxPreco"
         android:layout_width="60dp"
@@ -69,5 +61,20 @@
         android:layout_below="@+activity_cadastrar_produto/edtxLocal"
         android:layout_centerHorizontal="true"
         android:text="Confirmar" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_below="@+activity_cadastrar/spinnerTipo"
+        android:text="Preco" />
+
+    <Spinner
+        android:id="@+activity_cadastrar/spinnerTipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+activity_cadastrar_produto/edtxNome" />
 
 </RelativeLayout>

@@ -3,6 +3,7 @@ package com.projetoP2.listadecompras;
 import java.io.IOException;
 
 import com.projetoP2.listadecompras.library.Produto;
+import com.projetoP2.listadecompras.library.ProdutoEmKg;
 import com.projetoP2.listadecompras.library.ProdutoEmUnidade;
 
 import android.os.Bundle;
@@ -20,7 +21,9 @@ import android.widget.*;
  */
 public class CadastrarProduto extends Activity {
 	EditText nome, preco,local;
+	Spinner tipo;
 	Documento doc = Documento.getInstance(this);
+	private  static final String[] tipos = { "Kg" ,"Und."};
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -30,9 +33,14 @@ public class CadastrarProduto extends Activity {
 	@Override
 	protected void onStart() {
 		super.onStart();
+		tipo = (Spinner) findViewById(R.activity_cadastrar.spinnerTipo);
 		
+		ArrayAdapter<String> medidas = new ArrayAdapter<String>( this ,android.R.layout.simple_spinner_item , tipos);
+		tipo.setAdapter(medidas);
 		Button confirmar = (Button) findViewById(R.activity_cadastrar_produto.btConfirmar);
 		confirmar.setOnClickListener(new OnClickListener() {
+			
+			
 			Produto produto;
 			@Override
 			public void onClick(View v) {
@@ -43,7 +51,16 @@ public class CadastrarProduto extends Activity {
 					double precoProduto = Double.parseDouble(preco.getText().toString());
 					local = (EditText) findViewById(R.activity_cadastrar_produto.edtxLocal);
 					String localVenda = local.getText().toString();
-					produto = new ProdutoEmUnidade(nomeProduto,localVenda,precoProduto);
+					
+					switch(tipo.getSelectedItemPosition()){
+						case 0:
+							produto = new ProdutoEmKg(nomeProduto, localVenda, precoProduto);
+							break;
+						case 1:
+							produto = new ProdutoEmUnidade(nomeProduto,localVenda,precoProduto);
+							break;
+					}
+					
 					
 					MainActivity.gerencia.add(produto);
 					

@@ -2,6 +2,8 @@ package com.projetoP2.listadecompras;
 import java.io.IOException;
 import com.projetoP2.listadecompras.library.ListaDeCompras;
 import com.projetoP2.listadecompras.library.Produto;
+import com.projetoP2.listadecompras.library.ProdutoEmKg;
+import com.projetoP2.listadecompras.library.ProdutoEmUnidade;
 
 import android.os.Bundle;
 import android.app.*;
@@ -103,7 +105,7 @@ public class ListaActivity extends Activity {
 	            txt.setText(nomeProduto + " - " + listaCompra.getMapaDeProdutos().get(p));
 	            txt.setTag(nomeProduto);
 	            TextView txt2 = (TextView) v.findViewById(R.item_produto.txtpreco);
-	          //  txt2.setText(valorProduto);
+	            //txt2.setText(nomeProduto);
 	            txt.setOnClickListener(new View.OnClickListener() {
 					
 					@Override
@@ -304,13 +306,21 @@ public class ListaActivity extends Activity {
 	public void addQuantidade(String nome){
 		final Dialog dialog = new Dialog(this);
 		dialog.setContentView(R.layout.dialog_quantidade);
-		dialog.setTitle("Atualizar preço");
+		dialog.setTitle("Determinar quantidade de" + nome);
 		
 		for (int i = 0; i < MainActivity.gerencia.nomesProdutos().length; i++) {
 			if (MainActivity.gerencia.nomesProdutos()[i].equals(nome)){
 				p = MainActivity.gerencia.getListaDeProdutos().get(i);
 			}	
 		}
+		
+		TextView txt = (TextView) dialog.findViewById(R.dialog_quantidade.txtmedida);
+		if (p.getClass() == ProdutoEmKg.class){
+			txt.setText("(Kg)");
+		} else if (p.getClass() == ProdutoEmUnidade.class){
+			txt.setText("(Und)");
+		}
+		
 		
 		Button confirmar = (Button) dialog.findViewById(R.dialog_quantidade.confirmar);
 		confirmar.setOnClickListener(new OnClickListener() {
