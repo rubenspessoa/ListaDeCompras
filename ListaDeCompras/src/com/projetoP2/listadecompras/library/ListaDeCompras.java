@@ -65,8 +65,12 @@ public class ListaDeCompras implements Serializable {
 		return valorDaListaDeProdutos;
 	}
 	
+	public void setValorEmProduto(Produto produto, int quantidade, double valor, String estabelecimento){
+		produto.addEventoDePreco(quantidade, valor, estabelecimento);
+	}
+	
 	public void setValorEmProduto(Produto produto, double valor, String estabelecimento){
-		produto.addEventoDePreco(valor, estabelecimento);
+		produto.addEventoDePreco(1, valor, estabelecimento);
 	}
 
 	public LinkedHashMap<Produto, Double> getMapaDeProdutos() {

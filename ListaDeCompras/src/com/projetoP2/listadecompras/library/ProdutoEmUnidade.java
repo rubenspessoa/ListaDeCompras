@@ -9,15 +9,18 @@ public class ProdutoEmUnidade extends Produto implements Medida, Serializable {
 	 */
 	private static final long serialVersionUID = -580427383168426924L;
 
-	public ProdutoEmUnidade(String nome, String estabelecimento, double valor) {
-		super(nome, estabelecimento, valor);
-		int quantidade = 1;
-		addEventoDePreco(calculaValorDaUnidadeDeMedida(quantidade, valor), estabelecimento);
+	double quantidadeComprada;
+	
+	public ProdutoEmUnidade(String nome, String estabelecimento, double preco) {
+		super(nome, estabelecimento, preco);
+		this.quantidadeComprada = 1;
+		addEventoDePreco(quantidadeComprada, preco, estabelecimento);
 	}
 	
-	public ProdutoEmUnidade(String nome, String estabelecimento, int quantidade, double valor) {
-		super(nome, estabelecimento, valor);
-		addEventoDePreco(calculaValorDaUnidadeDeMedida(quantidade, valor), estabelecimento);
+	public ProdutoEmUnidade(String nome, String estabelecimento, double qtdComprada, double preco) {
+		super(nome, estabelecimento, preco);
+		this.quantidadeComprada = qtdComprada;
+		addEventoDePreco(quantidadeComprada, preco, estabelecimento);
 	}
 
 	@Override
@@ -31,9 +34,11 @@ public class ProdutoEmUnidade extends Produto implements Medida, Serializable {
 	}
 
 	@Override
-	public void addEventoDePreco(double valor, String estabelecimento) {
-		// TODO Auto-generated method stub
-		
+	public void addEventoDePreco(double quantidade, double valor,
+			String estabelecimento) {
+		super.estabelecimento = estabelecimento;
+		super.valor = calculaValorDaUnidadeDeMedida(quantidade, valor);
+		super.eventosDePreco.add(new EventoDePreco(calculaValorDaUnidadeDeMedida(quantidade, valor), estabelecimento));	
 	}
 
 }

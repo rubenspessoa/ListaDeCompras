@@ -26,30 +26,24 @@ public abstract class Produto implements Serializable {
                 this.valor = valor;
         }
         
-        public void onDelete() {
-                this.estabelecimento = null;
-                this.valor = 0.0;
-                eventosDePreco.removeAll(eventosDePreco);
-        }
-        
         /**
          * Adiciona um evento de preco ao produto
          * @param valor do produto
          * @param estabelecimento local onde foi encontrado
          */
         
-		public abstract void addEventoDePreco(double valor, String estabelecimento);
+		public abstract void addEventoDePreco(double quantidade, double valor, String estabelecimento);
 		
 		public String getNome() {
 			return nome;
 		}
 		
         public String getEstabelecimento() {
-			return eventosDePreco.getLast().getEstabelecimento();
+			return estabelecimento;
 		}
 		
         public double getValor() {
-        		return eventosDePreco.getLast().getValor();
+        		return valor;
         }
 			
 }

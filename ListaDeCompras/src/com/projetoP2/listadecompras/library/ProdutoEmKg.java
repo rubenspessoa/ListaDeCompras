@@ -9,17 +9,18 @@ public class ProdutoEmKg extends Produto implements Medida, Serializable {
 	 */
 	private static final long serialVersionUID = 1094665976608781148L;
 	
-	double ValorDaUnidadeDeMedida;
+	double quantidadeComprada;
 	
 	public ProdutoEmKg(String nome, String estabelecimento, double preco) {
 		super(nome, estabelecimento, preco);
-		int qtdComprada = 1;
-		addEventoDePreco(calculaValorDaUnidadeDeMedida(qtdComprada, preco), estabelecimento);
+		this.quantidadeComprada = 1;
+		addEventoDePreco(quantidadeComprada, preco, estabelecimento);
 	}
 	
 	public ProdutoEmKg(String nome, String estabelecimento, double qtdComprada, double preco) {
 		super(nome, estabelecimento, preco);
-		addEventoDePreco(calculaValorDaUnidadeDeMedida(qtdComprada, preco), estabelecimento);
+		this.quantidadeComprada = qtdComprada;
+		addEventoDePreco(quantidadeComprada, preco, estabelecimento);
 	}
 
 	@Override
@@ -33,8 +34,10 @@ public class ProdutoEmKg extends Produto implements Medida, Serializable {
 	}
 
 	@Override
-	public void addEventoDePreco(double valor, String estabelecimento) {
-		this.eventosDePreco.add(new EventoDePreco(valor, estabelecimento));		
+	public void addEventoDePreco(double quantidade, double valor, String estabelecimento) {
+		super.estabelecimento = estabelecimento;
+		super.valor = calculaValorDaUnidadeDeMedida(quantidade, valor);
+		super.eventosDePreco.add(new EventoDePreco(calculaValorDaUnidadeDeMedida(quantidade, valor), estabelecimento));		
 	}
 
 }
