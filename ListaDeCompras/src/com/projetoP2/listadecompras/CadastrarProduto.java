@@ -3,6 +3,7 @@ package com.projetoP2.listadecompras;
 import java.io.IOException;
 
 import com.projetoP2.listadecompras.library.Produto;
+import com.projetoP2.listadecompras.library.ProdutoEmUnidade;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -32,7 +33,7 @@ public class CadastrarProduto extends Activity {
 		
 		Button confirmar = (Button) findViewById(R.activity_cadastrar_produto.btConfirmar);
 		confirmar.setOnClickListener(new OnClickListener() {
-			
+			Produto produto;
 			@Override
 			public void onClick(View v) {
 				try {
@@ -42,8 +43,7 @@ public class CadastrarProduto extends Activity {
 					double precoProduto = Double.parseDouble(preco.getText().toString());
 					local = (EditText) findViewById(R.activity_cadastrar_produto.edtxLocal);
 					String localVenda = local.getText().toString();
-
-					Produto produto = new Produto(nomeProduto,localVenda,precoProduto);
+					produto = new ProdutoEmUnidade(nomeProduto,localVenda,1,precoProduto);
 					
 					MainActivity.gerencia.add(produto);
 					

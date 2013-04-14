@@ -60,11 +60,12 @@ public final class R {
     public static final class id {
         public static final int LinearLayout1=0x7f080005;
         public static final int RelativeLayout1=0x7f080003;
-        public static final int action_settings=0x7f080006;
-        public static final int addNaLista=0x7f080008;
-        public static final int adicionar_produto=0x7f080009;
-        public static final int excluirLista=0x7f080007;
-        public static final int lista_de_produto=0x7f08000a;
+        public static final int action_settings=0x7f080007;
+        public static final int addNaLista=0x7f080009;
+        public static final int adicionar_produto=0x7f08000a;
+        public static final int button1=0x7f080006;
+        public static final int excluirLista=0x7f080008;
+        public static final int lista_de_produto=0x7f08000b;
         public static final int textView1=0x7f080000;
         public static final int textView2=0x7f080001;
         public static final int textView3=0x7f080004;
@@ -84,7 +85,8 @@ public final class R {
         public static final int dialog_add_lista=0x7f030005;
         public static final int dialog_atualizar_preco=0x7f030006;
         public static final int item_produto=0x7f030007;
-        public static final int selecionar_produto=0x7f030008;
+        public static final int produto_add=0x7f030008;
+        public static final int selecionar_produto=0x7f030009;
     }
     public static final class menu {
         public static final int cadastrar_produto=0x7f070000;
@@ -93,9 +95,15 @@ public final class R {
         public static final int main=0x7f070003;
         public static final int produto=0x7f070004;
     }
+    public static final class produto_add {
+        public static final int btAdd=0x7f110003;
+        public static final int quantidade=0x7f110002;
+        public static final int txtpreco=0x7f110001;
+        public static final int txtproduto=0x7f110000;
+    }
     public static final class selecionar_produto {
-        public static final int buttonAdd=0x7f110001;
-        public static final int listItens=0x7f110000;
+        public static final int buttonAdd=0x7f120001;
+        public static final int listItens=0x7f120000;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
