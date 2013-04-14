@@ -18,8 +18,8 @@ public class ProdutoEmKg extends Produto implements Medida, Serializable {
 	}
 
 	@Override
-	public double calculaValor(double pesoDesejado, double precoDoKg) {
-		return pesoDesejado * precoDoKg;
+	public double calculaValor(double pesoDesejado) {
+		return pesoDesejado * super.valor;
 	}
 
 	@Override

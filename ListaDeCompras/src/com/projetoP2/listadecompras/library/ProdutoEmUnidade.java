@@ -18,8 +18,8 @@ public class ProdutoEmUnidade extends Produto implements Medida, Serializable {
 	}
 
 	@Override
-	public double calculaValor(double quantidade, double preco) {
-		return quantidade * preco;
+	public double calculaValor(double pesoDesejado) {
+		return pesoDesejado * super.valor;
 	}
 
 	@Override

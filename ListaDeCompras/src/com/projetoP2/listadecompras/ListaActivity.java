@@ -102,10 +102,15 @@ public class ListaActivity extends Activity {
 	            
 	            
 	            TextView txt = (TextView) v.findViewById(R.item_produto.txtproduto);
-	            txt.setText(nomeProduto + " - " + listaCompra.getMapaDeProdutos().get(p));
+	            if (p.getClass() == ProdutoEmKg.class){
+	            	txt.setText(nomeProduto + " - " + String.format("%.3f", listaCompra.getMapaDeProdutos().get(p)) + " kgs");
+	    		} else if (p.getClass() == ProdutoEmUnidade.class){
+	    			txt.setText(nomeProduto + " - " + String.format("%.0f", listaCompra.getMapaDeProdutos().get(p)) + " und.");
+	    		}
+	            //txt.setText(nomeProduto + " - " + listaCompra.getMapaDeProdutos().get(p));
 	            txt.setTag(nomeProduto);
 	            TextView txt2 = (TextView) v.findViewById(R.item_produto.txtpreco);
-	            //txt2.setText(nomeProduto);
+	            txt2.setText("R$ " +String.format("%.2f",p.calculaValor(listaCompra.getMapaDeProdutos().get(p))));
 	            txt.setOnClickListener(new View.OnClickListener() {
 					
 					@Override
@@ -161,7 +166,8 @@ public class ListaActivity extends Activity {
 				try {
 					double precoAtual = Double.parseDouble(preco.getText().toString());
 					String estabelecimento = local.getText().toString();
-					MainActivity.gerencia.getListaDeProdutos().get(index).addEventoDePreco(1,precoAtual, estabelecimento);
+					double quantidade = listaCompra.getMapaDeProdutos().get(MainActivity.gerencia.getListaDeProdutos().get(index));
+					MainActivity.gerencia.getListaDeProdutos().get(index).addEventoDePreco(quantidade,precoAtual, estabelecimento);
 					try {	
 						doc.salvarConjunto(MainActivity.gerencia);
 						Toast.makeText(getApplicationContext(), "Produto atualizado!", Toast.LENGTH_SHORT).show();
