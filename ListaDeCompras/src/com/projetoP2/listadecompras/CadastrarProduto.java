@@ -35,7 +35,7 @@ public class CadastrarProduto extends Activity {
 		super.onStart();
 		tipo = (Spinner) findViewById(R.activity_cadastrar.spinnerTipo);
 		
-		ArrayAdapter<String> medidas = new ArrayAdapter<String>( this ,android.R.layout.simple_spinner_item , tipos);
+		ArrayAdapter<String> medidas = new ArrayAdapter<String>( this ,android.R.layout.simple_spinner_dropdown_item , tipos);
 		tipo.setAdapter(medidas);
 		Button confirmar = (Button) findViewById(R.activity_cadastrar_produto.btConfirmar);
 		confirmar.setOnClickListener(new OnClickListener() {

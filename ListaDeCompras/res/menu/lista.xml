@@ -7,7 +7,7 @@
         android:title="@string/action_settings"/>
     
 	<item android:id="@+id/excluirLista"
-          android:title="Excluir disciplina"
+          android:title="Excluir lista"
           android:icon="@drawable/ic_delete"
           android:alphabeticShortcut="n"
           android:showAsAction="ifRoom|withText" />
