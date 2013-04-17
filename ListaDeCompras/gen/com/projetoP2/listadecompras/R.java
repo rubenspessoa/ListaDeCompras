@@ -21,6 +21,7 @@ public final class R {
         public static final int listProdutos=0x7f0b0000;
     }
     public static final class activity_lista_de_produtos {
+        public static final int ButtonOrdenado=0x7f0c0002;
         public static final int addProduto=0x7f0c0001;
         public static final int listProdutos=0x7f0c0000;
     }

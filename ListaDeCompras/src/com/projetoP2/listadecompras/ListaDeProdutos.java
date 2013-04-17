@@ -1,5 +1,6 @@
 package com.projetoP2.listadecompras;
 
+import android.R.drawable;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -10,15 +11,19 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 /**
  * (Activity)Tela de lista de produtos, exibe todos os produtos existentes no sistema.
  * @author Arthur Felipe, Joao Paulo Ribeiro, Rubens Pessoa, Victor Souto
  *
  */
 public class ListaDeProdutos extends Activity {
-	String[] nomesDosProdutos = MainActivity.gerencia.nomesProdutos();
-	
+	String[] nomesDosProdutos;
+	ListView lista;
+	ArrayAdapter<String> adapter;
+	boolean ordemInversa = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,9 +34,13 @@ public class ListaDeProdutos extends Activity {
 	@Override
 	protected void onStart() {
 		super.onStart();
-		
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>( this ,android.R.layout. simple_list_item_1 , nomesDosProdutos);
-		ListView lista = (ListView) findViewById(R.activity_lista_de_produtos.listProdutos);
+		if (!ordemInversa){
+			nomesDosProdutos = MainActivity.gerencia.nomesProdutos();
+		} else {
+			nomesDosProdutos = MainActivity.gerencia.nomesProdutosInvertida();
+		}
+		adapter = new ArrayAdapter<String>( this ,android.R.layout. simple_list_item_1 , nomesDosProdutos);
+		lista = (ListView) findViewById(R.activity_lista_de_produtos.listProdutos);
 		lista.setAdapter(adapter);
 		
 		Button adicionar = (Button) findViewById(R.activity_lista_de_produtos.addProduto);
@@ -60,6 +69,23 @@ public class ListaDeProdutos extends Activity {
 				startActivity(intent);
 			}
 		});
+		
+		ImageButton ordenado = (ImageButton) findViewById(R.activity_lista_de_produtos.ButtonOrdenado);
+		ordenado.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if (!ordemInversa){
+					ordemInversa = true;
+					onStart();
+					Toast.makeText(getApplicationContext(), "Clicado pra inverter", Toast.LENGTH_SHORT).show();
+				} else {
+					ordemInversa = false;
+					onStart();
+					Toast.makeText(getApplicationContext(), "Clicado pra ordenar", Toast.LENGTH_SHORT).show();
+				}
+			}
+		});
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -67,5 +93,7 @@ public class ListaDeProdutos extends Activity {
 		getMenuInflater().inflate(R.menu.lista_de_produtos, menu);
 		return true;
 	}
+	
+	
 
 }

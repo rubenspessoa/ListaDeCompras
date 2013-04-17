@@ -3,6 +3,13 @@ package com.projetoP2.listadecompras.library;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.TreeSet;
+
+import com.projetoP2.listadecompras.ListaDeProdutos;
 /**
  * Gerencia a lista de todos os produtos cadastrados no aplicativo e as listas criadas pelo usuario.
  * @author Arthur Felipe, Joao Paulo Ribeiro, Rubens Pessoa, Victor Souto
@@ -51,20 +58,33 @@ public class GerenciarListas implements Serializable {
 	 * @return Os nomes de todos os produtos cadastrados.
 	 */
 	public String[] nomesProdutos(){
-		
-    	String[] nomes = new String[listaDeProdutos.size()];
-    	
+		Collections.sort(listaDeProdutos, new Compara());
+    	String[] nomes = new String[listaDeProdutos.size()];  
     	for (int i = 0;i<listaDeProdutos.size();i++ ){
     		nomes[i] = listaDeProdutos.get(i).nome;
     	}
-    	
     	return nomes;
+		
+    	
+    }
+	public String[] nomesProdutosInvertida(){
+		Collections.sort(listaDeProdutos, new Compara());
+		Collections.reverse(listaDeProdutos);
+		
+    	String[] nomes = new String[listaDeProdutos.size()];  
+    	for (int i = 0;i<listaDeProdutos.size();i++ ){
+    		nomes[i] = listaDeProdutos.get(i).nome;
+    	}
+    	return nomes;
+		
+    	
     }
 	
 	public ArrayList<Produto> getListaDeProdutos() {
 		return listaDeProdutos;
 	}
-	
+
+
 	/*
 	 * LISTAS DE COMPRAS
 	 */

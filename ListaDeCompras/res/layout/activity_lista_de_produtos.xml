@@ -7,24 +7,33 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ListaDeProdutos" >
 
     <ListView
         android:id="@+activity_lista_de_produtos/listProdutos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
+        android:layout_alignLeft="@+activity_lista_de_produtos/addProduto"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="60dp" >
+        android:layout_marginTop="50dp" >
+
     </ListView>
 
     <Button
         android:id="@+activity_lista_de_produtos/addProduto"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+activity_lista_de_produtos/ButtonOrdenado"
         android:text="Adicionar produto" />
+
+    <ImageButton
+        android:id="@+activity_lista_de_produtos/ButtonOrdenado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@android:drawable/ic_menu_sort_alphabetically" />
 
 </RelativeLayout>
