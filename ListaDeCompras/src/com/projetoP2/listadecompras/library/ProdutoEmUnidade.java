@@ -2,7 +2,7 @@ package com.projetoP2.listadecompras.library;
 
 import java.io.Serializable;
 
-public class ProdutoEmUnidade extends Produto implements Medida, Serializable {
+public class ProdutoEmUnidade extends Produto implements Calculavel, Serializable {
 
 	/**
 	 * 

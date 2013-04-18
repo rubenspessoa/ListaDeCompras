@@ -10,7 +10,7 @@ import java.util.LinkedList;
  *
  */
 
-public abstract class Produto implements Serializable, Medida {
+public abstract class Produto implements Serializable, Calculavel {
     
         /**
          * 
