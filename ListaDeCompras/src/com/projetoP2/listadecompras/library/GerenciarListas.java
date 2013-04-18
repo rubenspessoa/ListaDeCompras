@@ -5,9 +5,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.TreeSet;
+=======
+>>>>>>> Busca por palavras-chave.
 
 import com.projetoP2.listadecompras.ListaDeProdutos;
 /**

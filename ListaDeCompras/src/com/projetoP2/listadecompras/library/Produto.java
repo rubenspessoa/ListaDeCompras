@@ -1,6 +1,7 @@
 package com.projetoP2.listadecompras.library;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -19,11 +20,17 @@ public abstract class Produto implements Serializable, Medida {
         String nome, estabelecimento;
         double valor;
         LinkedList<EventoDePreco> eventosDePreco = new LinkedList<EventoDePreco>();
+        ArrayList<String> palavrasChave = new ArrayList<String>();
  
         public Produto (String nome, String estabelecimento, double valor) {
                 this.nome = nome;
                 this.estabelecimento = estabelecimento;
                 this.valor = valor;
+                String[] criaPalavrasChave = nome.split(" ");
+                for ( int i = 0; i < criaPalavrasChave.length; i++) {
+                		if (!criaPalavrasChave.equals(""))
+                			palavrasChave.add(criaPalavrasChave[i]);
+                }
         }
         
         /**
@@ -33,6 +40,21 @@ public abstract class Produto implements Serializable, Medida {
          */
         
 		public abstract void addEventoDePreco(double quantidade, double valor, String estabelecimento);
+		
+		public void addPalavrasChave(String palavra){
+			String[] teste = palavra.trim().split(",");
+			for (int i = 0; i < teste.length; i++) {
+				addPalavraChave(teste[i]);
+			}
+		}
+		
+		private void addPalavraChave(String palavra) {
+			palavrasChave.add(palavra);
+		}
+		
+		public ArrayList<String> getPalavrasChave(){
+			return palavrasChave;
+		}
 		
 		public String getNome() {
 			return nome;
