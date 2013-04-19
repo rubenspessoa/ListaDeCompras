@@ -18,8 +18,8 @@ public class GerenciarListas implements Serializable {
 	 */
 	private static final long serialVersionUID = -8857382174325365137L;
 	
-	ArrayList<Produto> listaDeProdutos = new ArrayList<Produto>();
-	ArrayList<ListaDeCompras> listasDeCompras = new ArrayList<ListaDeCompras>();
+	public ArrayList<Produto> listaDeProdutos = new ArrayList<Produto>();
+	public ArrayList<ListaDeCompras> listasDeCompras = new ArrayList<ListaDeCompras>();
 
 	public GerenciarListas(){
 		listaDeProdutos.add(new ProdutoEmUnidade("Arroz Generico 1kg", "Supermercado Generico", 3.50));

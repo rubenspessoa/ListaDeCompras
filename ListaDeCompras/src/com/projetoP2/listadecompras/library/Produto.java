@@ -20,7 +20,7 @@ public abstract class Produto implements Serializable, Calculavel, Comparable<Pr
         String nome, estabelecimento;
         double valor;
         LinkedList<EventoDePreco> eventosDePreco = new LinkedList<EventoDePreco>();
-        ArrayList<String> palavrasChave = new ArrayList<String>();
+        public ArrayList<String> palavrasChave = new ArrayList<String>();
  
         public Produto (String nome, String estabelecimento, double valor) {
                 this.nome = nome;

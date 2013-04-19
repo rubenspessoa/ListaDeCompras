@@ -1,6 +1,8 @@
 package com.projetoP2.listadecompras;
 
-import android.R.drawable;
+import java.util.ArrayList;
+
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -11,7 +13,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 /**
@@ -23,6 +27,8 @@ public class ListaDeProdutos extends Activity {
 	String[] nomesDosProdutos;
 	ListView lista;
 	ArrayAdapter<String> adapter;
+	EditText busca;
+	ImageView btnBusca;
 	boolean ordemInversa = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,17 @@ public class ListaDeProdutos extends Activity {
 		lista = (ListView) findViewById(R.activity_lista_de_produtos.listProdutos);
 		lista.setAdapter(adapter);
 		
+		busca = (EditText) findViewById(R.activity_lista_de_produtos.ediBusca);
+		btnBusca = (ImageView) findViewById(R.activity_lista_de_produtos.btnBusca);
+		btnBusca.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				String[] encontrado = search(busca.getText().toString());
+				ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(ListaDeProdutos.this, android.R.layout.simple_list_item_1, encontrado);
+				lista.setAdapter(adapter1);
+			}
+		});
 		Button adicionar = (Button) findViewById(R.activity_lista_de_produtos.addProduto);
 		adicionar.setOnClickListener(new OnClickListener() {
 			
@@ -86,6 +103,8 @@ public class ListaDeProdutos extends Activity {
 				}
 			}
 		});
+		
+		
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -94,6 +113,24 @@ public class ListaDeProdutos extends Activity {
 		return true;
 	}
 	
-	
+	public String[] search(String busca){
+		ArrayList<String> searchArr = new ArrayList<String>();
+		for (int i = 0; i < MainActivity.gerencia.getListaDeProdutos().size(); i++) {
+			for (int j = 0; j < MainActivity.gerencia.getListaDeProdutos().get(i).palavrasChave.size(); j++) {
+				if (MainActivity.gerencia.listaDeProdutos.get(i).palavrasChave.get(j).toLowerCase().contains(busca.toLowerCase())){
+					searchArr.add(MainActivity.gerencia.listaDeProdutos.get(i).getNome());
+					break;
+				}
+			}
+			
+		}
+		String[] search = new String[searchArr.size()];
+		for (int i = 0; i < search.length; i++) {
+			search[i] = searchArr.get(i);
+		}
+		
+		return search;
+		
+	}
 
 }
