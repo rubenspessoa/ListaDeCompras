@@ -160,8 +160,12 @@ public class GerenciarListas implements Serializable {
 				sugerida.add(produto);
 			}
 		} else {
-			int maiorNumeroDeCompras = maiorNumeroDeCompras();
+			ArrayList<Produto> copyListaDeProdutos = listaDeProdutos;
+			Collections.sort(copyListaDeProdutos, new ProdutoComparatorQuantasVezesComprado());
+			Collections.reverse(copyListaDeProdutos);
 			
+			int maiorNumeroDeCompras = maiorNumeroDeCompras();
+				
 			for (Produto produto : listaDeProdutos) {
 				if (produto.quantasVezesFoiComprado() >= maiorNumeroDeCompras/2) {
 					sugerida.add(produto);

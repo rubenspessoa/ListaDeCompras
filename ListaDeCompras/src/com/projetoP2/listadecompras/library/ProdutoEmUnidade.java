@@ -36,4 +36,14 @@ public class ProdutoEmUnidade extends Produto implements Calculavel, Serializabl
 		super.eventosDePreco.add(new EventoDePreco(calculaValorDaUnidadeDeMedida(quantidade, valor), estabelecimento));	
 	}
 
+	@Override
+	public int compareTo(Produto another) {
+		if (this.quantasVezesFoiComprado() > another.quantasVezesFoiComprado()) {
+			return 1;
+		} else if (this.quantasVezesFoiComprado() == another.quantasVezesFoiComprado()) {
+			return 0;
+		} else {
+			return -1;
+		}
+	}
 }
