@@ -101,6 +101,11 @@ public abstract class Produto implements Serializable, Calculavel, Comparable<Pr
 		
 		private int[] getIntervalosDeCompra(){
 			int[] ArrayIntervalos;
+			if (getAmostraEventosDePreco().size() < 2){
+				ArrayIntervalos = new int[1];
+				ArrayIntervalos[1] = 15; //Valor arbitrário para o caso de  não haver eventos de compra suficientes.
+				return ArrayIntervalos;
+			}
 			ArrayIntervalos = new int[getAmostraEventosDePreco().size() - 1];
 			for(int i = 0 ; i < getAmostraEventosDePreco().size() -1 ; i++){
 				int evento_corrente = (int) (getAmostraEventosDePreco().get(i).getData().getTime()/86400000);
@@ -141,6 +146,10 @@ public abstract class Produto implements Serializable, Calculavel, Comparable<Pr
 		public int getTendenciaDeCompra(){
 			Date dataHoje = new Date();
 			int diaHoje = (int)dataHoje.getTime()/86400000;
-			return diaHoje - ((int)(getAmostraEventosDePreco().getLast().getData().getTime()/86400000) + getTendenciaDeIntervalo()); 
+			int tendencia = diaHoje - ((int)(getAmostraEventosDePreco().getLast().getData().getTime()/86400000) + getTendenciaDeIntervalo()); 
+			if (tendencia < 0){
+				return -tendencia;
+			}
+			return tendencia;
 		}
 }

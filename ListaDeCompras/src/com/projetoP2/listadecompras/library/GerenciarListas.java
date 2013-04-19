@@ -184,10 +184,10 @@ public class GerenciarListas implements Serializable {
 	 * Retorna uma lista sugerida de produtos automática. Utiliza os habitos compra de do usuário
 	 * (eventos de preço para cada produto) para gerar esta lista.
 	 * 
-	 * @return LinkedList<Produto> listaFinal
+	 * @return LinkedList<Produto> listaSugeridaFinal
 	 */
 	
-	public LinkedList<Produto> getListaSugeridaDeProdutos(int tamanho){
+	public ListaDeCompras getListaSugeridaDeProdutos(String nome, int tamanho){
 		 ArrayList<Produto> listaOrdenadaPreliminar = new ArrayList<Produto>(this.listaDeProdutos);
 		/*	Primeira ordenação dos produtos. Aqui todos os produtos cadastrados são ordenados
 		*decrescentemente* por quantidades de eventos.
@@ -201,21 +201,26 @@ public class GerenciarListas implements Serializable {
 		/*	Aqui a lista ordenada de todos os produtos obtida anteriormente
 		 * é cortada numa lista menor de comprimento @param tamanho.
 		 */
-		LinkedList<Produto> listaFinal = new LinkedList<Produto>();
+		LinkedList<Produto> listaSugeridaFinal = new LinkedList<Produto>();
 		if(tamanho< listaOrdenadaPreliminar.size()){
 			tamanho = listaOrdenadaPreliminar.size();
 		}
 		for(int i = 0 ; i < tamanho ; i++){
-			listaFinal.add(listaOrdenadaPreliminar.get(i));
+			listaSugeridaFinal.add(listaOrdenadaPreliminar.get(i));
 		}
 		
 		//	Segunda ordenação de produtos.
-		Collections.sort(listaFinal, new Comparator<Produto>() {
+		Collections.sort(listaSugeridaFinal, new Comparator<Produto>() {
 		    public int compare(Produto a, Produto b) {
 		        return a.getTendenciaDeCompra() - b.getTendenciaDeCompra();
 		    }
 		});
-		return listaFinal;
+		// Cria a ListaDeCompras e adiciona os produtos sugeridos
+		ListaDeCompras listaComprasSugerida = new ListaDeCompras(nome);
+		for(Produto produto : listaSugeridaFinal){
+			listaComprasSugerida.add(produto, 1);
+		}
+		return listaComprasSugerida;
 	}
 	
 	private int maiorNumeroDeCompras(){
