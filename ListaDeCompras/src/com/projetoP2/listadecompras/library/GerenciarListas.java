@@ -4,6 +4,8 @@ package com.projetoP2.listadecompras.library;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
 
 /**
  * Gerencia a lista de todos os produtos cadastrados no aplicativo e as listas criadas pelo usuario.
@@ -17,6 +19,7 @@ public class GerenciarListas implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -8857382174325365137L;
+	private static final long msecsDia = 86400000;
 	
 	public ArrayList<Produto> listaDeProdutos = new ArrayList<Produto>();
 	public ArrayList<ListaDeCompras> listasDeCompras = new ArrayList<ListaDeCompras>();
@@ -171,11 +174,48 @@ public class GerenciarListas implements Serializable {
 					sugerida.add(produto);
 				}
 			}
-			
 		}
 		
 		return sugerida;
 		
+	}
+	
+	/**
+	 * Retorna uma lista sugerida de produtos automática. Utiliza os habitos compra de do usuário
+	 * (eventos de preço para cada produto) para gerar esta lista.
+	 * 
+	 * @return LinkedList<Produto> listaFinal
+	 */
+	
+	public LinkedList<Produto> getListaSugeridaDeProdutos(int tamanho){
+		 ArrayList<Produto> listaOrdenadaPreliminar = new ArrayList<Produto>(this.listaDeProdutos);
+		/*	Primeira ordenação dos produtos. Aqui todos os produtos cadastrados são ordenados
+		*decrescentemente* por quantidades de eventos.
+		* 										*testar
+		*/
+		Collections.sort(listaOrdenadaPreliminar, new Comparator<Produto>() {
+		    public int compare(Produto a, Produto b) {
+		        return b.getAmostraEventosDePreco().size() - a.getAmostraEventosDePreco().size();
+		    }
+		});
+		/*	Aqui a lista ordenada de todos os produtos obtida anteriormente
+		 * é cortada numa lista menor de comprimento @param tamanho.
+		 */
+		LinkedList<Produto> listaFinal = new LinkedList<Produto>();
+		if(tamanho< listaOrdenadaPreliminar.size()){
+			tamanho = listaOrdenadaPreliminar.size();
+		}
+		for(int i = 0 ; i < tamanho ; i++){
+			listaFinal.add(listaOrdenadaPreliminar.get(i));
+		}
+		
+		//	Segunda ordenação de produtos.
+		Collections.sort(listaFinal, new Comparator<Produto>() {
+		    public int compare(Produto a, Produto b) {
+		        return a.getTendenciaDeCompra() - b.getTendenciaDeCompra();
+		    }
+		});
+		return listaFinal;
 	}
 	
 	private int maiorNumeroDeCompras(){
