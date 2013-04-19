@@ -52,14 +52,6 @@
         android:layout_below="@+id/textView4"
         android:ems="10" />
 
-    <Button
-        android:id="@+activity_cadastrar_produto/btConfirmar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+activity_cadastrar_produto/edtxLocal"
-        android:layout_centerHorizontal="true"
-        android:text="Confirmar" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -74,5 +66,23 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView2"
         android:layout_below="@+activity_cadastrar_produto/edtxNome" />
+
+    <EditText
+        android:id="@+activity_cadastrar_produto/edtxChave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+activity_cadastrar_produto/edtxLocal"
+        android:layout_below="@+activity_cadastrar_produto/edtxLocal"
+        android:ems="10"
+        android:hint="Palavras-chave separadas por virgula(,)[Ex: macarrao,massa]"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+activity_cadastrar_produto/btConfirmar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+activity_cadastrar_produto/edtxChave"
+        android:layout_below="@+activity_cadastrar_produto/edtxChave"
+        android:text="Confirmar" />
 
 </RelativeLayout>

@@ -78,7 +78,7 @@ public class ListaDeProdutos extends Activity {
 				Intent intent = new Intent(ListaDeProdutos.this,ProdutoActivity.class);
 				
 				for (int i = 0; i< nomesDosProdutos.length;i++){
-					if(nomesDosProdutos[arg2].equals(MainActivity.gerencia.getListaDeProdutos().get(i).getNome())){
+					if (lista.getItemAtPosition(arg2).equals(MainActivity.gerencia.getListaDeProdutos().get(i).getNome())) {
 						intent.putExtra("index", i);
 						break;
 					}

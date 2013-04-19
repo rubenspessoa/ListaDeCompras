@@ -8,5 +8,6 @@
     <string name="title_activity_cadastrar_produto">Cadastrar Produto</string>
     <string name="title_activity_lista_de_produtos">Lista de Produtos</string>
     <string name="title_activity_produto">ProdutoActivity</string>
+    <string name="title_activity_sugestao_lista">Lista sugerida</string>
 
 </resources>

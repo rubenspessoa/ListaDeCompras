@@ -12,7 +12,8 @@ public final class R {
         public static final int spinnerTipo=0x7f0a0000;
     }
     public static final class activity_cadastrar_produto {
-        public static final int btConfirmar=0x7f090003;
+        public static final int btConfirmar=0x7f090004;
+        public static final int edtxChave=0x7f090003;
         public static final int edtxLocal=0x7f090002;
         public static final int edtxNome=0x7f090000;
         public static final int edtxPreco=0x7f090001;
@@ -42,20 +43,20 @@ public final class R {
         public static final int ediBusca=0x7f0d0001;
     }
     public static final class dialog_add_lista {
-        public static final int btn_Cancelar=0x7f100002;
-        public static final int btn_Confirmar=0x7f100001;
-        public static final int nomeLista=0x7f100000;
+        public static final int btn_Cancelar=0x7f110002;
+        public static final int btn_Confirmar=0x7f110001;
+        public static final int nomeLista=0x7f110000;
     }
     public static final class dialog_atualizar_preco {
-        public static final int btn_Cancelar=0x7f110003;
-        public static final int btn_Confirmar=0x7f110002;
-        public static final int localDeVenda=0x7f110000;
-        public static final int preco=0x7f110001;
+        public static final int btn_Cancelar=0x7f120003;
+        public static final int btn_Confirmar=0x7f120002;
+        public static final int localDeVenda=0x7f120000;
+        public static final int preco=0x7f120001;
     }
     public static final class dialog_quantidade {
-        public static final int confirmar=0x7f120002;
-        public static final int quantidade=0x7f120000;
-        public static final int txtmedida=0x7f120001;
+        public static final int confirmar=0x7f130002;
+        public static final int quantidade=0x7f130000;
+        public static final int txtmedida=0x7f130001;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -73,23 +74,25 @@ public final class R {
         public static final int ic_launcher=0x7f020002;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f080005;
+        public static final int LinearLayout1=0x7f080007;
         public static final int RelativeLayout1=0x7f080003;
-        public static final int action_settings=0x7f080007;
-        public static final int addNaLista=0x7f080009;
-        public static final int adicionar_produto=0x7f08000a;
-        public static final int button1=0x7f080006;
-        public static final int excluirLista=0x7f080008;
+        public static final int addNaLista=0x7f08000a;
+        public static final int adicionar_produto=0x7f08000c;
+        public static final int button1=0x7f080008;
+        public static final int excluirLista=0x7f080009;
+        public static final int linearLayout1=0x7f080005;
+        public static final int listView1=0x7f080006;
         public static final int lista_de_produto=0x7f08000b;
+        public static final int sugerir_lista=0x7f08000d;
         public static final int textView1=0x7f080000;
         public static final int textView2=0x7f080001;
         public static final int textView3=0x7f080004;
         public static final int textView4=0x7f080002;
     }
     public static final class item_produto {
-        public static final int chcproduto=0x7f130001;
-        public static final int txtpreco=0x7f130002;
-        public static final int txtproduto=0x7f130000;
+        public static final int chcproduto=0x7f140001;
+        public static final int txtpreco=0x7f140002;
+        public static final int txtproduto=0x7f140000;
     }
     public static final class layout {
         public static final int activity_cadastrar_produto=0x7f030000;
@@ -97,12 +100,19 @@ public final class R {
         public static final int activity_lista_de_produtos=0x7f030002;
         public static final int activity_main=0x7f030003;
         public static final int activity_produto=0x7f030004;
-        public static final int dialog_add_lista=0x7f030005;
-        public static final int dialog_atualizar_preco=0x7f030006;
-        public static final int dialog_quantidade=0x7f030007;
-        public static final int item_produto=0x7f030008;
-        public static final int produto_add=0x7f030009;
-        public static final int selecionar_produto=0x7f03000a;
+        public static final int activity_sugestao_lista=0x7f030005;
+        public static final int dialog_add_lista=0x7f030006;
+        public static final int dialog_atualizar_preco=0x7f030007;
+        public static final int dialog_quantidade=0x7f030008;
+        public static final int item_produto=0x7f030009;
+        public static final int produto_add=0x7f03000a;
+        public static final int selecionar_produto=0x7f03000b;
+    }
+    public static final class lista_sugerida {
+        public static final int btn_Cancelar=0x7f100001;
+        public static final int btn_Confirmar=0x7f100000;
+        public static final int lista=0x7f100003;
+        public static final int nomeLista=0x7f100002;
     }
     public static final class menu {
         public static final int cadastrar_produto=0x7f070000;
@@ -110,14 +120,15 @@ public final class R {
         public static final int lista_de_produtos=0x7f070002;
         public static final int main=0x7f070003;
         public static final int produto=0x7f070004;
+        public static final int sugestao_lista=0x7f070005;
     }
     public static final class produto_add {
-        public static final int btAdd=0x7f140001;
-        public static final int txtpreco=0x7f140002;
-        public static final int txtproduto=0x7f140000;
+        public static final int btAdd=0x7f150001;
+        public static final int txtpreco=0x7f150002;
+        public static final int txtproduto=0x7f150000;
     }
     public static final class selecionar_produto {
-        public static final int listItens=0x7f150000;
+        public static final int listItens=0x7f160000;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
@@ -127,6 +138,7 @@ public final class R {
         public static final int title_activity_lista=0x7f050003;
         public static final int title_activity_lista_de_produtos=0x7f050005;
         public static final int title_activity_produto=0x7f050006;
+        public static final int title_activity_sugestao_lista=0x7f050007;
     }
     public static final class style {
         /** 

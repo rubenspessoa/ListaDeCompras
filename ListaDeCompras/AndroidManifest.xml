@@ -38,6 +38,10 @@
             android:name="com.projetoP2.listadecompras.ProdutoActivity"
             android:label="@string/title_activity_produto" >
         </activity>
+        <activity
+            android:name="com.projetoP2.listadecompras.SugestaoLista"
+            android:label="@string/title_activity_sugestao_lista" >
+        </activity>
     </application>
 
 </manifest>

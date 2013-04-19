@@ -155,9 +155,16 @@ public class MainActivity extends Activity {
 	      		Intent intent2 = new Intent(MainActivity.this,ListaDeProdutos.class);
 	        	startActivity(intent2);
 	        	break;
+	      	case R.id.sugerir_lista:
+	      		Intent intent3 = new Intent(MainActivity.this,SugestaoLista.class);
+	        	startActivity(intent3);
+	      		break;
 		} 
 	    	
 		return super.onOptionsItemSelected(item);
 	}
+	
+	
+	
 
 }

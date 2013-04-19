@@ -15,9 +15,9 @@ public class ListaDeCompras implements Serializable {
 	 */
 	private static final long serialVersionUID = -4851367961472402839L;
 	
-	String nome;
-	Date data;
-	LinkedHashMap<Produto, Double> mapaDeProdutos = new LinkedHashMap<Produto, Double>();
+	public String nome;
+	public Date data;
+	public LinkedHashMap<Produto, Double> mapaDeProdutos = new LinkedHashMap<Produto, Double>();
 	double valorDaListaDeProdutos;
 
 	public ListaDeCompras (String nome) {

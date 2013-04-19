@@ -20,7 +20,7 @@ import android.widget.*;
  *
  */
 public class CadastrarProduto extends Activity {
-	EditText nome, preco,local;
+	EditText nome, preco,local,chave;
 	Spinner tipo;
 	Documento doc = Documento.getInstance(this);
 	private  static final String[] tipos = { "Kg" ,"Und."};
@@ -51,13 +51,15 @@ public class CadastrarProduto extends Activity {
 					double precoProduto = Double.parseDouble(preco.getText().toString());
 					local = (EditText) findViewById(R.activity_cadastrar_produto.edtxLocal);
 					String localVenda = local.getText().toString();
-					
+					chave = (EditText) findViewById(R.activity_cadastrar_produto.edtxChave);
 					switch(tipo.getSelectedItemPosition()){
 						case 0:
 							produto = new ProdutoEmKg(nomeProduto, localVenda, precoProduto);
+							produto.addPalavrasChave(chave.getText().toString());
 							break;
 						case 1:
 							produto = new ProdutoEmUnidade(nomeProduto,localVenda,precoProduto);
+							produto.addPalavrasChave(chave.getText().toString());
 							break;
 					}
 					
