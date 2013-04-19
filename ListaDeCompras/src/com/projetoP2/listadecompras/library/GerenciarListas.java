@@ -151,4 +151,38 @@ public class GerenciarListas implements Serializable {
 		return listasDeCompras;
 	}
 	
+	public ListaDeCompras sugereListaDeCompras(String nomeDaLista) {
+		
+		ListaDeCompras sugerida = new ListaDeCompras(nomeDaLista);
+		
+		if (listasDeCompras.size() == 0) {
+			for (Produto produto : listaDeProdutos) {
+				sugerida.add(produto);
+			}
+		} else {
+			int maiorNumeroDeCompras = maiorNumeroDeCompras();
+			
+			for (Produto produto : listaDeProdutos) {
+				if (produto.quantasVezesFoiComprado() >= maiorNumeroDeCompras/2) {
+					sugerida.add(produto);
+				}
+			}
+			
+		}
+		
+		return sugerida;
+		
+	}
+	
+	private int maiorNumeroDeCompras(){
+		int maiorNumeroDeCompras = 0;
+		
+		for (Produto produto : listaDeProdutos) {
+			if (produto.quantasVezesFoiComprado() > maiorNumeroDeCompras) {
+				maiorNumeroDeCompras = produto.quantasVezesFoiComprado();
+			}
+		}
+		
+		return maiorNumeroDeCompras;
+	}
 }

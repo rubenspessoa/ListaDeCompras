@@ -67,5 +67,9 @@ public abstract class Produto implements Serializable, Calculavel {
         public double getValor() {
         		return valor;
         }
+        
+        public int quantasVezesFoiComprado(){
+        		return eventosDePreco.size();
+        }
 			
 }
