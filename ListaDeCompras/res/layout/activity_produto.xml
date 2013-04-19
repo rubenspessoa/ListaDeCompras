@@ -52,8 +52,8 @@
         android:layout_alignBaseline="@+id/textView2"
         android:layout_alignBottom="@+id/textView2"
         android:layout_toRightOf="@+id/textView2"
+        android:gravity="right"
         android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium" 
-        android:gravity="right"/>
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

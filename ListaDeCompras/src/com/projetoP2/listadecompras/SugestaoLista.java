@@ -54,9 +54,18 @@ public class SugestaoLista extends Activity {
 					onBackPressed();
 				}
 			});
-			} catch (Exception e) {
+			
+			Button cancelar = (Button) findViewById(R.lista_sugerida.btn_Cancelar);
+			cancelar.setOnClickListener(new OnClickListener() {
 				
-			}
+				@Override
+				public void onClick(View v) {
+					onBackPressed();
+				}
+			});
+		} catch (Exception e) {
+				
+		}
 		super.onStart();
 	}
 
