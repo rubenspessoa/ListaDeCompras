@@ -13,7 +13,7 @@ import android.widget.*;
  *
  */
 public class ProdutoActivity extends Activity {
-	TextView preco, local;
+	TextView preco, local,data,melhorPreco,melhorLocal,melhorData;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -31,6 +31,14 @@ public class ProdutoActivity extends Activity {
 		preco.setText(String.format("%.2f", p.getValor()));
 		local = (TextView) findViewById(R.activity_produto.local);
 		local.setText(p.getEstabelecimento());
+		data = (TextView) findViewById(R.activity_produto.data);
+		data.setText(p.eventosDePreco.getLast().getData().toLocaleString());
+		melhorPreco = (TextView) findViewById(R.activity_produto.melhorPreco);
+		melhorPreco.setText(String.format("%.2f",p.melhorEventoDePreco().getValor()));
+		melhorLocal = (TextView) findViewById(R.activity_produto.melhorLocal);
+		melhorLocal.setText(p.melhorEventoDePreco().getEstabelecimento());
+		melhorData = (TextView) findViewById(R.activity_produto.melhorData);
+		melhorData.setText(p.melhorEventoDePreco().getData().toLocaleString());
 		
 		
 		

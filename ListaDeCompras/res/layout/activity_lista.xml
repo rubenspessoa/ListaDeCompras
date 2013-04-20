@@ -12,8 +12,20 @@
         android:id="@+activity_lista/listProdutos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true" >
+
     </ListView>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_vertical"
+        android:text="Toque no nome de um produto para alterar seu valor"
+        android:textColor="#868686"
+        android:textSize="12sp" />
 
 </RelativeLayout>

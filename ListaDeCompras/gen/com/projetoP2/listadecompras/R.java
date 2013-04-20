@@ -33,7 +33,11 @@ public final class R {
         public static final int listListasDeCompras=0x7f0e0000;
     }
     public static final class activity_produto {
+        public static final int data=0x7f0f0004;
         public static final int local=0x7f0f0001;
+        public static final int melhorData=0x7f0f0003;
+        public static final int melhorLocal=0x7f0f0005;
+        public static final int melhorPreco=0x7f0f0002;
         public static final int preco=0x7f0f0000;
     }
     public static final class attr {
@@ -74,16 +78,18 @@ public final class R {
         public static final int ic_launcher=0x7f020002;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f080007;
+        public static final int LinearLayout1=0x7f080009;
         public static final int RelativeLayout1=0x7f080003;
-        public static final int addNaLista=0x7f08000a;
-        public static final int adicionar_produto=0x7f08000c;
-        public static final int button1=0x7f080008;
-        public static final int excluirLista=0x7f080009;
-        public static final int linearLayout1=0x7f080005;
-        public static final int listView1=0x7f080006;
-        public static final int lista_de_produto=0x7f08000b;
-        public static final int sugerir_lista=0x7f08000d;
+        public static final int TextView07=0x7f080006;
+        public static final int TextView08=0x7f080005;
+        public static final int addNaLista=0x7f08000c;
+        public static final int adicionar_produto=0x7f08000e;
+        public static final int button1=0x7f08000a;
+        public static final int excluirLista=0x7f08000b;
+        public static final int linearLayout1=0x7f080007;
+        public static final int listView1=0x7f080008;
+        public static final int lista_de_produto=0x7f08000d;
+        public static final int sugerir_lista=0x7f08000f;
         public static final int textView1=0x7f080000;
         public static final int textView2=0x7f080001;
         public static final int textView3=0x7f080004;

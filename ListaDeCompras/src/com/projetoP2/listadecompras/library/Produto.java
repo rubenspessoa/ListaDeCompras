@@ -19,7 +19,7 @@ public abstract class Produto implements Serializable, Calculavel, Comparable<Pr
        
         String nome, estabelecimento;
         double valor;
-        LinkedList<EventoDePreco> eventosDePreco = new LinkedList<EventoDePreco>();
+        public LinkedList<EventoDePreco> eventosDePreco = new LinkedList<EventoDePreco>();
         public ArrayList<String> palavrasChave = new ArrayList<String>();
  
         public Produto (String nome, String estabelecimento, double valor) {
@@ -151,5 +151,18 @@ public abstract class Produto implements Serializable, Calculavel, Comparable<Pr
 				return -tendencia;
 			}
 			return tendencia;
+		}
+		
+		public EventoDePreco melhorEventoDePreco(){
+			EventoDePreco melhorEvento = eventosDePreco.getFirst();
+			double melhorPreco = eventosDePreco.getFirst().valorPago;
+			for (EventoDePreco evento : eventosDePreco) {
+				if (evento.valorPago < melhorPreco){
+					melhorEvento = evento;
+					melhorPreco = evento.valorPago;
+				}
+			}
+			
+			return melhorEvento;
 		}
 }
