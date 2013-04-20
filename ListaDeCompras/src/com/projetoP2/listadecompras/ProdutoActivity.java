@@ -13,7 +13,7 @@ import android.widget.*;
  *
  */
 public class ProdutoActivity extends Activity {
-	TextView preco, local,data,melhorPreco,melhorLocal,melhorData;
+	TextView preco, local,data,melhorPreco,melhorLocal,melhorData,palavrasChave;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,7 +39,17 @@ public class ProdutoActivity extends Activity {
 		melhorLocal.setText(p.melhorEventoDePreco().getEstabelecimento());
 		melhorData = (TextView) findViewById(R.activity_produto.melhorData);
 		melhorData.setText(p.melhorEventoDePreco().getData().toLocaleString());
+		palavrasChave = (TextView) findViewById(R.activity_produto.palavrasChave);
 		
+		String palavras = "";
+		for (int i = 0; i < p.palavrasChave.size(); i++) {
+			if (p.palavrasChave.size() - 1 == i){
+				palavras += p.palavrasChave.get(i);
+			} else {
+				palavras += p.palavrasChave.get(i)+", ";
+			}
+		}
+		palavrasChave.setText(palavras);
 		
 		
 	}
