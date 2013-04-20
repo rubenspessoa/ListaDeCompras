@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true" >
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp" >
 
     </ListView>
 
@@ -27,5 +28,13 @@
         android:text="Toque no nome de um produto para alterar seu valor"
         android:textColor="#868686"
         android:textSize="12sp" />
+
+    <Button
+        android:id="@+activity_lista/btn_Finalizar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Finalizar compra" />
 
 </RelativeLayout>

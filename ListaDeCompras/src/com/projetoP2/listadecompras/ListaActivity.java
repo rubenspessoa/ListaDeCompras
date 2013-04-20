@@ -22,6 +22,7 @@ public class ListaActivity extends Activity {
 	//Nomes dos produtos que compõem a lista.
 	Documento doc = Documento.getInstance(this);
 	ListaDeCompras listaCompra;
+	
 	String nomeLista;
 	int index;
 	@Override
@@ -88,6 +89,7 @@ public class ListaActivity extends Activity {
 	             * o valor do produto.
 	             */
 	            chc.setOnClickListener(new View.OnClickListener() {
+	            	
 		            @Override
 		            public void onClick(View v) {
 		                CheckBox chk = (CheckBox) v;
@@ -96,6 +98,7 @@ public class ListaActivity extends Activity {
 		                	Toast.makeText(getApplicationContext(), produto + " coletado!", Toast.LENGTH_SHORT).show();
 		                } else {
 		                    Toast.makeText(getApplicationContext(), produto + " removido!", Toast.LENGTH_SHORT).show();
+		                    
 		                }
 		            }
 	            });
@@ -137,6 +140,20 @@ public class ListaActivity extends Activity {
         };// Fim ArrayAdapter
         
         lista.setAdapter(adapter);
+        Button finalizar = (Button) findViewById(R.activity_lista.btn_Finalizar);
+        finalizar.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				try {	
+					doc.salvarConjunto(MainActivity.gerencia);
+					Toast.makeText(getApplicationContext(), "Compra finalizada!", Toast.LENGTH_SHORT).show();
+					onBackPressed();
+				} catch (IOException e) {
+					Log.d("Erro", e.getMessage());
+				}
+			}
+		});
         
 		} catch(Exception e){
 			
