@@ -10,8 +10,11 @@ import android.app.*;
 import android.content.Intent;
 import android.util.Log;
 import android.view.*;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.widget.*;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 
 /**
  * (Activity)Lista de compras sendo utilizada no momento
@@ -120,7 +123,7 @@ public class ListaActivity extends Activity {
 					public void onClick(View v) {
 						TextView tx =(TextView) v;
 						String nome = (String) tx.getTag();
-						dialogAtualizar(nome);
+						openContextMenu(v);
 						Toast.makeText(getApplicationContext(), nome + " selecionado", Toast.LENGTH_SHORT).show();
 					}
 				});
@@ -140,6 +143,7 @@ public class ListaActivity extends Activity {
         };// Fim ArrayAdapter
         
         lista.setAdapter(adapter);
+        registerForContextMenu(lista);
         Button finalizar = (Button) findViewById(R.activity_lista.btn_Finalizar);
         finalizar.setOnClickListener(new OnClickListener() {
 			
@@ -159,8 +163,10 @@ public class ListaActivity extends Activity {
 			
 		}
 	}
-	
-	// Atualiza preço
+	/**
+	 * Atualiza o preco do Produto selecionado
+	 * @param nome do produto
+	 */
 	private void dialogAtualizar(String nome) {
 		final Dialog dialog = new Dialog(this);
 		dialog.setContentView(R.layout.dialog_atualizar_preco);
@@ -251,6 +257,50 @@ public class ListaActivity extends Activity {
 		} 
 	    	
 		return super.onOptionsItemSelected(item);
+	}
+	
+	
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		super.onCreateContextMenu(menu, v, menuInfo);
+		getMenuInflater().inflate(R.menu.context_menu_lista, menu);
+	}
+	
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		AdapterContextMenuInfo contextMenuInfo = (AdapterContextMenuInfo) item.getMenuInfo();
+		int itemPosition = contextMenuInfo.position;
+		
+		
+		switch (item.getItemId()) {
+		case R.id.remover_produto:
+			if (listaCompra.getMapaDeProdutos().size() == 1){
+				Toast.makeText(getApplicationContext(), "Unico produto desta lista, voce pode adicionar outros ou excluir a lista.", Toast.LENGTH_LONG).show();
+			} else {
+				for (int i = 0; i < MainActivity.gerencia.listaDeProdutos.size(); i++) {
+					if (MainActivity.gerencia.listaDeProdutos.get(i).getNome().equals(listaCompra.getNomeProdutos()[itemPosition])){
+						listaCompra.getMapaDeProdutos().remove(MainActivity.gerencia.listaDeProdutos.get(i));
+						try {
+							Toast.makeText(getApplicationContext(), "removido!", Toast.LENGTH_SHORT).show();
+							doc.salvarConjunto(MainActivity.gerencia);
+						} catch (IOException e) {
+							Log.d("Erro", e.getMessage());
+						}
+						onStart();
+						break;
+						
+					}
+				}
+				
+			}
+			break;
+		case R.id.atualizar_preco:
+			String nome = listaCompra.getNomeProdutos()[itemPosition];
+			dialogAtualizar(nome);
+		}
+		
+		return super.onContextItemSelected(item);
 	}
 	
 	/*

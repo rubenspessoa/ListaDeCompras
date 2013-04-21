@@ -84,15 +84,17 @@ public final class R {
         public static final int RelativeLayout1=0x7f080003;
         public static final int TextView07=0x7f080007;
         public static final int TextView08=0x7f080006;
-        public static final int addNaLista=0x7f08000e;
-        public static final int adicionar_produto=0x7f080010;
+        public static final int addNaLista=0x7f080010;
+        public static final int adicionar_produto=0x7f080012;
+        public static final int atualizar_preco=0x7f08000e;
         public static final int button1=0x7f08000c;
-        public static final int excluirLista=0x7f08000d;
+        public static final int excluirLista=0x7f08000f;
         public static final int linearLayout1=0x7f080009;
         public static final int listView1=0x7f08000a;
-        public static final int lista_de_produto=0x7f08000f;
+        public static final int lista_de_produto=0x7f080011;
+        public static final int remover_produto=0x7f08000d;
         public static final int scrollView1=0x7f080004;
-        public static final int sugerir_lista=0x7f080011;
+        public static final int sugerir_lista=0x7f080013;
         public static final int textView1=0x7f080000;
         public static final int textView2=0x7f080001;
         public static final int textView3=0x7f080005;
@@ -126,11 +128,12 @@ public final class R {
     }
     public static final class menu {
         public static final int cadastrar_produto=0x7f070000;
-        public static final int lista=0x7f070001;
-        public static final int lista_de_produtos=0x7f070002;
-        public static final int main=0x7f070003;
-        public static final int produto=0x7f070004;
-        public static final int sugestao_lista=0x7f070005;
+        public static final int context_menu_lista=0x7f070001;
+        public static final int lista=0x7f070002;
+        public static final int lista_de_produtos=0x7f070003;
+        public static final int main=0x7f070004;
+        public static final int produto=0x7f070005;
+        public static final int sugestao_lista=0x7f070006;
     }
     public static final class produto_add {
         public static final int btAdd=0x7f150001;
