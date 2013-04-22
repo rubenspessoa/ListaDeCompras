@@ -70,7 +70,7 @@ public class CadastrarProduto extends Activity {
 						doc.salvarConjunto(MainActivity.gerencia);
 						Toast.makeText(getApplicationContext(), produto.getNome() + " adicionado!", Toast.LENGTH_SHORT).show();
 					} catch (IOException e) {
-						Log.d("Bosta", e.getMessage());
+						Log.d("Erro", e.getMessage());
 					}
 					
 					Intent intent = new Intent(CadastrarProduto.this, MainActivity.class);

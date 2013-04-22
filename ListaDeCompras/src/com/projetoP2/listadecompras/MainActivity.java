@@ -106,7 +106,7 @@ public class MainActivity extends Activity {
 						doc.salvarConjunto(MainActivity.gerencia);
 						Toast.makeText(getApplicationContext(), nomeLista.getText().toString() + " adicionado!", Toast.LENGTH_SHORT).show();
 					} catch (IOException e) {
-						Log.d("Bosta", e.getMessage());
+						Log.d("Erro", e.getMessage());
 					}
 					
 					onStart();

@@ -105,22 +105,14 @@ public class ListaDeProdutos extends Activity {
 				if (!ordemInversa){
 					ordemInversa = true;
 					onStart();
-					Toast.makeText(getApplicationContext(), "Clicado pra inverter", Toast.LENGTH_SHORT).show();
 				} else {
 					ordemInversa = false;
 					onStart();
-					Toast.makeText(getApplicationContext(), "Clicado pra ordenar", Toast.LENGTH_SHORT).show();
 				}
 			}
 		});
 		
 		
-	}
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.lista_de_produtos, menu);
-		return true;
 	}
 	
 	public String[] search(String busca){
