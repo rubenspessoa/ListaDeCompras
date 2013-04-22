@@ -17,7 +17,7 @@ public abstract class Produto implements Serializable, Calculavel, Comparable<Pr
          */
         private static final long serialVersionUID = -2017858648084823895L;
        
-        String nome, estabelecimento;
+        public String nome, estabelecimento;
         double valor;
         public LinkedList<EventoDePreco> eventosDePreco = new LinkedList<EventoDePreco>();
         public ArrayList<String> palavrasChave = new ArrayList<String>();
