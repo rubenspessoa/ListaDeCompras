@@ -140,9 +140,10 @@ public final class R {
         public static final int context_menu_lista=0x7f070001;
         public static final int context_menu_produto=0x7f070002;
         public static final int lista=0x7f070003;
-        public static final int main=0x7f070004;
-        public static final int produto=0x7f070005;
-        public static final int sugestao_lista=0x7f070006;
+        public static final int lista_de_produtos=0x7f070004;
+        public static final int main=0x7f070005;
+        public static final int produto=0x7f070006;
+        public static final int sugestao_lista=0x7f070007;
     }
     public static final class produto_add {
         public static final int btAdd=0x7f160001;

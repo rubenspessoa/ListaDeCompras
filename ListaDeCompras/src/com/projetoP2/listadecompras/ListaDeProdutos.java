@@ -138,6 +138,7 @@ public class ListaDeProdutos extends Activity {
 	public void dialogEditar(final int position){
 		final Dialog dialog = new Dialog(this);
 		dialog.setContentView(R.layout.dialog_editar_produto);
+		dialog.setTitle("Editar produto");
 		Produto p = MainActivity.gerencia.getListaDeProdutos().get(position);
 		Button confirmar, cancelar;
 		
