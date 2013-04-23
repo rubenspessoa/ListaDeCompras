@@ -17,10 +17,10 @@ public abstract class Produto implements Serializable, Calculavel, Comparable<Pr
          */
         private static final long serialVersionUID = -2017858648084823895L;
        
-        public String nome, estabelecimento;
-        double valor;
-        public LinkedList<EventoDePreco> eventosDePreco = new LinkedList<EventoDePreco>();
-        public ArrayList<String> palavrasChave = new ArrayList<String>();
+        private String nome, estabelecimento;
+		private double valor;
+        private LinkedList<EventoDePreco> eventosDePreco = new LinkedList<EventoDePreco>();
+        private ArrayList<String> palavrasChave = new ArrayList<String>();
  
         public Produto (String nome, String estabelecimento, double valor) {
                 this.nome = nome;
@@ -67,6 +67,30 @@ public abstract class Produto implements Serializable, Calculavel, Comparable<Pr
         public double getValor() {
         		return valor;
         }
+        
+        public LinkedList<EventoDePreco> getEventosDePreco() {
+			return eventosDePreco;
+		}
+
+		public void setEventosDePreco(LinkedList<EventoDePreco> eventosDePreco) {
+			this.eventosDePreco = eventosDePreco;
+		}
+
+		public void setNome(String nome) {
+			this.nome = nome;
+		}
+
+		public void setEstabelecimento(String estabelecimento) {
+			this.estabelecimento = estabelecimento;
+		}
+
+		public void setValor(double valor) {
+			this.valor = valor;
+		}
+
+		public void setPalavrasChave(ArrayList<String> palavrasChave) {
+			this.palavrasChave = palavrasChave;
+		}
         
         public int quantasVezesFoiComprado(){
         		return eventosDePreco.size();
@@ -155,11 +179,11 @@ public abstract class Produto implements Serializable, Calculavel, Comparable<Pr
 		
 		public EventoDePreco melhorEventoDePreco(){
 			EventoDePreco melhorEvento = eventosDePreco.getFirst();
-			double melhorPreco = eventosDePreco.getFirst().valorPago;
+			double melhorPreco = eventosDePreco.getFirst().getValorPago();
 			for (EventoDePreco evento : eventosDePreco) {
-				if (evento.valorPago < melhorPreco){
+				if (evento.getValorPago() < melhorPreco){
 					melhorEvento = evento;
-					melhorPreco = evento.valorPago;
+					melhorPreco = evento.getValorPago();
 				}
 			}
 			

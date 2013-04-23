@@ -32,7 +32,7 @@ public class ProdutoActivity extends Activity {
 		local = (TextView) findViewById(R.activity_produto.local);
 		local.setText(p.getEstabelecimento());
 		data = (TextView) findViewById(R.activity_produto.data);
-		data.setText(p.eventosDePreco.getLast().getData().toLocaleString());
+		data.setText(p.getEventosDePreco().getLast().getData().toLocaleString());
 		melhorPreco = (TextView) findViewById(R.activity_produto.melhorPreco);
 		melhorPreco.setText(String.format("%.2f",p.melhorEventoDePreco().getValor()));
 		melhorLocal = (TextView) findViewById(R.activity_produto.melhorLocal);
@@ -42,11 +42,11 @@ public class ProdutoActivity extends Activity {
 		palavrasChave = (TextView) findViewById(R.activity_produto.palavrasChave);
 		
 		String palavras = "";
-		for (int i = 0; i < p.palavrasChave.size(); i++) {
-			if (p.palavrasChave.size() - 1 == i){
-				palavras += p.palavrasChave.get(i);
+		for (int i = 0; i < p.getPalavrasChave().size(); i++) {
+			if (p.getPalavrasChave().size() - 1 == i){
+				palavras += p.getPalavrasChave().get(i);
 			} else {
-				palavras += p.palavrasChave.get(i)+", ";
+				palavras += p.getPalavrasChave().get(i)+", ";
 			}
 		}
 		palavrasChave.setText(palavras);

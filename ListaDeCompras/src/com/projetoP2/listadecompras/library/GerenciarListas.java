@@ -77,7 +77,7 @@ public class GerenciarListas implements Serializable {
     	String[] nomes = new String[listaDeProdutos.size()];
     	
     		for (int i = 0;i<listaDeProdutos.size();i++ ){
-    			nomes[i] = listaDeProdutos.get(i).nome;
+    			nomes[i] = listaDeProdutos.get(i).getNome();
     		}
     	
     	return nomes;
@@ -91,7 +91,7 @@ public class GerenciarListas implements Serializable {
     	String[] nomes = new String[listaDeProdutos.size()];
     	
     		for (int i = 0;i<listaDeProdutos.size();i++ ){
-    			nomes[i] = listaDeProdutos.get(i).nome;
+    			nomes[i] = listaDeProdutos.get(i).getNome();
     		}
     	
     	return nomes;
@@ -144,7 +144,7 @@ public class GerenciarListas implements Serializable {
 	String[] nomes = new String[listasDeCompras.size()];
     	
 		for (int i = 0;i < listasDeCompras.size();i++ ) {
-    			nomes[i] = listasDeCompras.get(i).nome;
+    			nomes[i] = listasDeCompras.get(i).getNome();
     		}
     	
     	return nomes;

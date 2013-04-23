@@ -45,8 +45,7 @@ public final class R {
     public static final class attr {
     }
     public static final class busca {
-        public static final int btnBusca=0x7f0d0000;
-        public static final int ediBusca=0x7f0d0001;
+        public static final int ediBusca=0x7f0d0000;
     }
     public static final class dialog_add_lista {
         public static final int btn_Cancelar=0x7f110002;

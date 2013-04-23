@@ -13,17 +13,14 @@ public class ListaDeCompras implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -4851367961472402839L;
+	private static long serialVersionUID = -4851367961472402839L;
 	
-	public String nome;
-	public Date data;
-	public LinkedHashMap<Produto, Double> mapaDeProdutos = new LinkedHashMap<Produto, Double>();
-	double valorDaListaDeProdutos;
+	private String nome;
+	private Date data;
+	private LinkedHashMap<Produto, Double> mapaDeProdutos = new LinkedHashMap<Produto, Double>();
+	private double valorDaListaDeProdutos;
 
-	public ListaDeCompras (String nome) {
-		this.nome = nome;
-		this.data = new Date();
-	}
+	
 	/**
 	 * Adiciona um produto a lista de compras
 	 * @param produto
@@ -132,5 +129,34 @@ public class ListaDeCompras implements Serializable {
 		}
 		
 		return produtos;
+	}
+	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	public static void setSerialversionuid(long serialversionuid) {
+		serialVersionUID = serialversionuid;
+	}
+	public Date getData() {
+		return data;
+	}
+	public void setData(Date data) {
+		this.data = data;
+	}
+	public double getValorDaListaDeProdutos() {
+		return valorDaListaDeProdutos;
+	}
+	public void setValorDaListaDeProdutos(double valorDaListaDeProdutos) {
+		this.valorDaListaDeProdutos = valorDaListaDeProdutos;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public void setMapaDeProdutos(LinkedHashMap<Produto, Double> mapaDeProdutos) {
+		this.mapaDeProdutos = mapaDeProdutos;
+	}
+	public ListaDeCompras (String nome) {
+		this.nome = nome;
+		this.data = new Date();
 	}
 }

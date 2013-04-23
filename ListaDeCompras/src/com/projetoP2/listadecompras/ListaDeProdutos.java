@@ -118,8 +118,8 @@ public class ListaDeProdutos extends Activity {
 	public String[] search(String busca){
 		ArrayList<String> searchArr = new ArrayList<String>();
 		for (int i = 0; i < MainActivity.gerencia.getListaDeProdutos().size(); i++) {
-			for (int j = 0; j < MainActivity.gerencia.getListaDeProdutos().get(i).palavrasChave.size(); j++) {
-				if (MainActivity.gerencia.listaDeProdutos.get(i).palavrasChave.get(j).toLowerCase().contains(busca.toLowerCase())){
+			for (int j = 0; j < MainActivity.gerencia.getListaDeProdutos().get(i).getPalavrasChave().size(); j++) {
+				if (MainActivity.gerencia.listaDeProdutos.get(i).getPalavrasChave().get(j).toLowerCase().contains(busca.toLowerCase())){
 					searchArr.add(MainActivity.gerencia.listaDeProdutos.get(i).getNome());
 					break;
 				}
@@ -146,11 +146,11 @@ public class ListaDeProdutos extends Activity {
 		nome.setText(p.getNome());
 		chaves = (EditText) dialog.findViewById(R.dialog_editar_produto.edtxChave);
 		String palavras = "";
-		for (int i = 0; i < p.palavrasChave.size(); i++) {
-			if (p.palavrasChave.size() - 1 == i){
-				palavras += p.palavrasChave.get(i);
+		for (int i = 0; i < p.getPalavrasChave().size(); i++) {
+			if (p.getPalavrasChave().size() - 1 == i){
+				palavras += p.getPalavrasChave().get(i);
 			} else {
-				palavras += p.palavrasChave.get(i)+",";
+				palavras += p.getPalavrasChave().get(i)+",";
 			}
 		}
 		chaves.setText(palavras);
@@ -160,11 +160,11 @@ public class ListaDeProdutos extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				MainActivity.gerencia.getListaDeProdutos().get(position).palavrasChave.clear();
+				MainActivity.gerencia.getListaDeProdutos().get(position).getPalavrasChave().clear();
 				for (String palavra: chaves.getText().toString().split(",")){
 					MainActivity.gerencia.getListaDeProdutos().get(position).addPalavrasChave(palavra);
 				}
-				MainActivity.gerencia.getListaDeProdutos().get(position).nome = nome.getText().toString();
+				MainActivity.gerencia.getListaDeProdutos().get(position).setNome(nome.getText().toString());
 				
 				try {	
 					doc.salvarConjunto(MainActivity.gerencia);

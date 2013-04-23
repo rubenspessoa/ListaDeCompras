@@ -15,10 +15,11 @@ public class EventoDePreco implements Serializable{
 	private static final long serialVersionUID = 2469973788231849455L;
 	
 
-	String estabelecimento; 
-	double valorPago;
-	Date data;
+	private String estabelecimento; 
+	private double valorPago;
+	private Date data;
 
+	
 	public EventoDePreco(double valor, String estabelecimento) {
 		data = new Date();
 		this.estabelecimento = estabelecimento;
@@ -40,5 +41,22 @@ public class EventoDePreco implements Serializable{
 	public int compareTo(Date anotherDate) {
 		return data.compareTo(anotherDate);
 	}
+	
+	public double getValorPago() {
+		return valorPago;
+	}
+
+	public void setValorPago(double valorPago) {
+		this.valorPago = valorPago;
+	}
+
+	public void setEstabelecimento(String estabelecimento) {
+		this.estabelecimento = estabelecimento;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
 	
 }

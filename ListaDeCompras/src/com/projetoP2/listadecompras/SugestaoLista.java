@@ -44,7 +44,7 @@ public class SugestaoLista extends Activity {
 				
 				@Override
 				public void onClick(View v) {
-					listaSugerida.nome = nome.getText().toString();
+					listaSugerida.setNome(nome.getText().toString());
 					MainActivity.gerencia.add(listaSugerida);
 					try {
 						doc.salvarConjunto(MainActivity.gerencia);

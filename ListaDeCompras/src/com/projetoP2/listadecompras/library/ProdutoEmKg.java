@@ -9,7 +9,7 @@ public class ProdutoEmKg extends Produto implements Calculavel, Serializable {
 	 */
 	private static final long serialVersionUID = 1094665976608781148L;
 	
-	double quantidadeComprada;
+	private double quantidadeComprada;
 	
 	public ProdutoEmKg(String nome, String estabelecimento, double preco) {
 		super(nome, estabelecimento, preco);
@@ -19,7 +19,7 @@ public class ProdutoEmKg extends Produto implements Calculavel, Serializable {
 
 	@Override
 	public double calculaValor(double pesoDesejado) {
-		return pesoDesejado * super.valor;
+		return pesoDesejado * super.getValor();
 	}
 
 	@Override
@@ -30,9 +30,9 @@ public class ProdutoEmKg extends Produto implements Calculavel, Serializable {
 	@Override
 	public void addEventoDePreco(double quantidade, double valor, String estabelecimento) {
 		this.quantidadeComprada = quantidade;
-		super.estabelecimento = estabelecimento;
-		super.valor = calculaValorDaUnidadeDeMedida(quantidade, valor);
-		super.eventosDePreco.add(new EventoDePreco(calculaValorDaUnidadeDeMedida(quantidade, valor), estabelecimento));		
+		super.setEstabelecimento(estabelecimento);
+		super.setValor(calculaValorDaUnidadeDeMedida(quantidade, valor));
+		super.getEventosDePreco().add(new EventoDePreco(calculaValorDaUnidadeDeMedida(quantidade, valor), estabelecimento));		
 	}
 
 	@Override

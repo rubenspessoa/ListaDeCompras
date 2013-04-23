@@ -24,6 +24,7 @@ public class CadastrarProduto extends Activity {
 	Spinner tipo;
 	Documento doc = Documento.getInstance(this);
 	private  static final String[] tipos = { "Kg" ,"Und."};
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
