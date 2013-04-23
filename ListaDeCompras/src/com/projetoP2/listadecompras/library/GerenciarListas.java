@@ -19,7 +19,6 @@ public class GerenciarListas implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -8857382174325365137L;
-	private static final long msecsDia = 86400000;
 	
 	public ArrayList<Produto> listaDeProdutos = new ArrayList<Produto>();
 	public ArrayList<ListaDeCompras> listasDeCompras = new ArrayList<ListaDeCompras>();
@@ -154,7 +153,7 @@ public class GerenciarListas implements Serializable {
 		return listasDeCompras;
 	}
 	
-	public ListaDeCompras sugereListaDeCompras(String nomeDaLista) {
+	public ListaDeCompras $sugereListaDeCompras(String nomeDaLista) {
 		
 		ListaDeCompras sugerida = new ListaDeCompras(nomeDaLista);
 		
@@ -187,38 +186,33 @@ public class GerenciarListas implements Serializable {
 	 * @return LinkedList<Produto> listaSugeridaFinal
 	 */
 	
-	public ListaDeCompras getListaSugeridaDeProdutos(String nome, int tamanho){
-		 ArrayList<Produto> listaOrdenadaPreliminar = new ArrayList<Produto>(this.listaDeProdutos);
+	//public ListaDeCompras getListaSugeridaDeProdutos(String nome, int tamanho){
+	public ListaDeCompras sugereListaDeCompras(String nome){
+		int tamanho = 25; //Tamanho da lista sugerida.
+		ArrayList<Produto> listaOrdenadaPreliminar = new ArrayList<Produto>(this.listaDeProdutos);
+		
 		/*	Primeira ordenação dos produtos. Aqui todos os produtos cadastrados são ordenados
 		*decrescentemente* por quantidades de eventos.
 		* 										*testar
 		*/
-		Collections.sort(listaOrdenadaPreliminar, new Comparator<Produto>() {
-		    public int compare(Produto a, Produto b) {
-		        return b.getAmostraEventosDePreco().size() - a.getAmostraEventosDePreco().size();
-		    }
-		});
+		Collections.sort(listaOrdenadaPreliminar,new ProdutoComparatorQuantasVezesCompradoRecentemente());
+		Collections.reverse(listaOrdenadaPreliminar);
 		/*	Aqui a lista ordenada de todos os produtos obtida anteriormente
-		 * é cortada numa lista menor de comprimento @param tamanho.
-		 */
+		* é cortada numa lista menor de comprimento @param tamanho.
+		*/
 		LinkedList<Produto> listaSugeridaFinal = new LinkedList<Produto>();
-		if(tamanho< listaOrdenadaPreliminar.size()){
+		if (tamanho > listaOrdenadaPreliminar.size()) {
 			tamanho = listaOrdenadaPreliminar.size();
 		}
-		for(int i = 0 ; i < tamanho ; i++){
+		for (int i = 0; i < tamanho; i++) {
 			listaSugeridaFinal.add(listaOrdenadaPreliminar.get(i));
 		}
-		
 		//	Segunda ordenação de produtos.
-		Collections.sort(listaSugeridaFinal, new Comparator<Produto>() {
-		    public int compare(Produto a, Produto b) {
-		        return a.getTendenciaDeCompra() - b.getTendenciaDeCompra();
-		    }
-		});
+		Collections.sort(listaSugeridaFinal,new ProdutoComparatorTendenciaDeCompra());
 		// Cria a ListaDeCompras e adiciona os produtos sugeridos
 		ListaDeCompras listaComprasSugerida = new ListaDeCompras(nome);
 		for(Produto produto : listaSugeridaFinal){
-			listaComprasSugerida.add(produto, 1);
+			listaComprasSugerida.add(produto);
 		}
 		return listaComprasSugerida;
 	}
