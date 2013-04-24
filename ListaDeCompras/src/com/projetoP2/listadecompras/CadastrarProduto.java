@@ -81,13 +81,13 @@ public class CadastrarProduto extends Activity {
 				} catch(NumberFormatException e){
 					AlertDialog.Builder dialogo = new AlertDialog.Builder(CadastrarProduto.this);
 					dialogo.setTitle("Ops!");
-					dialogo.setMessage("É necessario todas informações.");
+					dialogo.setMessage("? necessario todas informa??es.");
 					dialogo.setNeutralButton("OK", null);
 					dialogo.show();
 				} catch(IllegalArgumentException e2){
 					AlertDialog.Builder dialogo = new AlertDialog.Builder(CadastrarProduto.this);
 					dialogo.setTitle("Ops!");
-					dialogo.setMessage("Já existe um produto com este nome.");
+					dialogo.setMessage("J? existe um produto com este nome.");
 					dialogo.setNeutralButton("OK", null);
 					dialogo.show();
 				}

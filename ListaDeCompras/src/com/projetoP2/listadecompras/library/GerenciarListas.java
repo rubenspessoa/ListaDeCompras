@@ -4,8 +4,11 @@ package com.projetoP2.listadecompras.library;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+<<<<<<< HEAD
 import java.util.Comparator;
 import java.util.LinkedList;
+=======
+>>>>>>> Refatorando
 
 /**
  * Gerencia a lista de todos os produtos cadastrados no aplicativo e as listas criadas pelo usuario.
@@ -149,11 +152,29 @@ public class GerenciarListas implements Serializable {
     	return nomes;
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * Retorna um ArrayList com todas as listas de compras.
+	 * 
+	 * @return ArrayList<ListaDeCompras>
+	 */
+	
+>>>>>>> Refatorando
 	public ArrayList<ListaDeCompras> getListasDeCompras() {
 		return listasDeCompras;
 	}
 	
+<<<<<<< HEAD
 	public ListaDeCompras $sugereListaDeCompras(String nomeDaLista) {
+=======
+	/**
+	 * Sugere uma Lista de Compras com base nos produtos com mais Eventos de Preco.
+	 * @param nomeDaLista
+	 * @return
+	 */
+	public ListaDeCompras sugereListaDeCompras(String nomeDaLista) {
+>>>>>>> Refatorando
 		
 		ListaDeCompras sugerida = new ListaDeCompras(nomeDaLista);
 		
@@ -163,7 +184,11 @@ public class GerenciarListas implements Serializable {
 			}
 		} else {
 			ArrayList<Produto> copyListaDeProdutos = listaDeProdutos;
+<<<<<<< HEAD
 			Collections.sort(copyListaDeProdutos, new ProdutoComparatorQuantasVezesComprado());
+=======
+			Collections.sort(copyListaDeProdutos, new ProdutoMaisCompradoComparator());
+>>>>>>> Refatorando
 			Collections.reverse(copyListaDeProdutos);
 			
 			int maiorNumeroDeCompras = maiorNumeroDeCompras();
@@ -179,6 +204,7 @@ public class GerenciarListas implements Serializable {
 		
 	}
 	
+<<<<<<< HEAD
 	/**
 	 * Retorna uma lista sugerida de produtos automática. Utiliza os habitos compra de do usuário
 	 * (eventos de preço para cada produto) para gerar esta lista.
@@ -217,6 +243,8 @@ public class GerenciarListas implements Serializable {
 		return listaComprasSugerida;
 	}
 	
+=======
+>>>>>>> Refatorando
 	private int maiorNumeroDeCompras(){
 		int maiorNumeroDeCompras = 0;
 		
