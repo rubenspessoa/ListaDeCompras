@@ -4,7 +4,6 @@ package com.projetoP2.listadecompras.library;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.LinkedList;
 
 /**
@@ -153,7 +152,7 @@ public class GerenciarListas implements Serializable {
 		return listasDeCompras;
 	}
 	
-	public ListaDeCompras $sugereListaDeCompras(String nomeDaLista) {
+	public ListaDeCompras sugereListaDeCompras(String nomeDaLista) {
 		
 		ListaDeCompras sugerida = new ListaDeCompras(nomeDaLista);
 		
@@ -178,45 +177,47 @@ public class GerenciarListas implements Serializable {
 		return sugerida;
 		
 	}
-	
-	/**
-	 * Retorna uma lista sugerida de produtos automática. Utiliza os habitos compra de do usuário
-	 * (eventos de preço para cada produto) para gerar esta lista.
-	 * 
-	 * @return LinkedList<Produto> listaSugeridaFinal
-	 */
-	
-	//public ListaDeCompras getListaSugeridaDeProdutos(String nome, int tamanho){
-	public ListaDeCompras sugereListaDeCompras(String nome){
-		int tamanho = 25; //Tamanho da lista sugerida.
-		ArrayList<Produto> listaOrdenadaPreliminar = new ArrayList<Produto>(this.listaDeProdutos);
-		
-		/*	Primeira ordenação dos produtos. Aqui todos os produtos cadastrados são ordenados
-		*decrescentemente* por quantidades de eventos.
-		* 										*testar
-		*/
-		Collections.sort(listaOrdenadaPreliminar,new ProdutoComparatorQuantasVezesCompradoRecentemente());
-		Collections.reverse(listaOrdenadaPreliminar);
-		/*	Aqui a lista ordenada de todos os produtos obtida anteriormente
-		* é cortada numa lista menor de comprimento @param tamanho.
-		*/
-		LinkedList<Produto> listaSugeridaFinal = new LinkedList<Produto>();
-		if (tamanho > listaOrdenadaPreliminar.size()) {
-			tamanho = listaOrdenadaPreliminar.size();
-		}
-		for (int i = 0; i < tamanho; i++) {
-			listaSugeridaFinal.add(listaOrdenadaPreliminar.get(i));
-		}
-		//	Segunda ordenação de produtos.
-		Collections.sort(listaSugeridaFinal,new ProdutoComparatorTendenciaDeCompra());
-		// Cria a ListaDeCompras e adiciona os produtos sugeridos
-		ListaDeCompras listaComprasSugerida = new ListaDeCompras(nome);
-		for(Produto produto : listaSugeridaFinal){
-			listaComprasSugerida.add(produto);
-		}
-		return listaComprasSugerida;
-	}
-	
+//	CODIGO BUGADO
+//	
+//	/**
+//	 * Retorna uma lista sugerida de produtos automática. Utiliza os habitos compra de do usuário
+//	 * (eventos de preço para cada produto) para gerar esta lista.
+//	 * 
+//	 * @return LinkedList<Produto> listaSugeridaFinal
+//	 */
+//	
+//	//public ListaDeCompras getListaSugeridaDeProdutos(String nome, int tamanho){
+//	public ListaDeCompras sugereListaDeCompras(String nome){
+//		int tamanho = 25; //Tamanho da lista sugerida.
+//		ArrayList<Produto> listaOrdenadaPreliminar = new ArrayList<Produto>(this.listaDeProdutos);
+//		
+//		/*	Primeira ordenação dos produtos. Aqui todos os produtos cadastrados são ordenados
+//		*decrescentemente* por quantidades de eventos.
+//		* 										*testar
+//		*/
+//		Collections.sort(listaOrdenadaPreliminar,new ProdutoComparatorQuantasVezesCompradoRecentemente());
+//		Collections.reverse(listaOrdenadaPreliminar);
+//		/*	Aqui a lista ordenada de todos os produtos obtida anteriormente
+//		* é cortada numa lista menor de comprimento @param tamanho.
+//		*/
+//		LinkedList<Produto> listaSugeridaFinal = new LinkedList<Produto>();
+//		if (tamanho > listaOrdenadaPreliminar.size()) {
+//			tamanho = listaOrdenadaPreliminar.size();
+//		}
+//		for (int i = 0; i < tamanho; i++) {
+//			listaSugeridaFinal.add(listaOrdenadaPreliminar.get(i));
+//		}
+//		//	Segunda ordenação de produtos.
+//		Collections.sort(listaSugeridaFinal,new ProdutoComparatorTendenciaDeCompra());
+//		// Cria a ListaDeCompras e adiciona os produtos sugeridos
+//		ListaDeCompras listaComprasSugerida = new ListaDeCompras(nome);
+//		for(Produto produto : listaSugeridaFinal){
+//			listaComprasSugerida.add(produto);
+//		}
+//		return listaComprasSugerida;
+//	}
+//	
+//	FIM DO CODIGO BUGADO
 	private int maiorNumeroDeCompras(){
 		int maiorNumeroDeCompras = 0;
 		
