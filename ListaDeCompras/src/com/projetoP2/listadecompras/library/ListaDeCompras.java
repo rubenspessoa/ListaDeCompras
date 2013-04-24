@@ -13,11 +13,7 @@ public class ListaDeCompras implements Serializable {
 	/**
 	 * 
 	 */
-<<<<<<< HEAD
 	private static long serialVersionUID = -4851367961472402839L;
-=======
-	private static final long serialVersionUID = -6696930340942160978L;
->>>>>>> Refatorando
 	
 	private String nome;
 	private Date data;
@@ -135,15 +131,12 @@ public class ListaDeCompras implements Serializable {
 		return produtos;
 	}
 	
-<<<<<<< HEAD
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 	public static void setSerialversionuid(long serialversionuid) {
 		serialVersionUID = serialversionuid;
 	}
-=======
->>>>>>> Refatorando
 	public Date getData() {
 		return data;
 	}

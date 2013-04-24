@@ -2,6 +2,7 @@ package com.projetoP2.listadecompras.library;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 
 /**
@@ -15,11 +16,8 @@ public abstract class Produto implements Serializable, Calculavel, Comparable<Pr
          * 
          */
         private static final long serialVersionUID = -2017858648084823895L;
-<<<<<<< HEAD
        
         private static final int dia = 86400000;
-=======
->>>>>>> Refatorando
         private String nome, estabelecimento;
 		private double valor;
         private LinkedList<EventoDePreco> eventosDePreco = new LinkedList<EventoDePreco>();
@@ -73,7 +71,6 @@ public abstract class Produto implements Serializable, Calculavel, Comparable<Pr
         
         public LinkedList<EventoDePreco> getEventosDePreco() {
 			return eventosDePreco;
-<<<<<<< HEAD
 		}
 
 		public void setEventosDePreco(LinkedList<EventoDePreco> eventosDePreco) {
@@ -192,33 +189,7 @@ public abstract class Produto implements Serializable, Calculavel, Comparable<Pr
 				return -tendencia;
 			}
 			return tendencia;
-=======
 		}
-
-		public void setEventosDePreco(LinkedList<EventoDePreco> eventosDePreco) {
-			this.eventosDePreco = eventosDePreco;
-		}
-
-		public void setNome(String nome) {
-			this.nome = nome;
-		}
-
-		public void setEstabelecimento(String estabelecimento) {
-			this.estabelecimento = estabelecimento;
-		}
-
-		public void setValor(double valor) {
-			this.valor = valor;
->>>>>>> Refatorando
-		}
-
-		public void setPalavrasChave(ArrayList<String> palavrasChave) {
-			this.palavrasChave = palavrasChave;
-		}
-        
-        public int quantasVezesFoiComprado(){
-        		return eventosDePreco.size();
-        }
 		
 		public EventoDePreco melhorEventoDePreco(){
 			EventoDePreco melhorEvento = eventosDePreco.getFirst();

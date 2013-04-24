@@ -35,6 +35,7 @@ public class SugestaoLista extends Activity {
 			Button aceitar = (Button) findViewById(R.lista_sugerida.btn_Confirmar);
 			nome = (EditText) findViewById(R.lista_sugerida.nomeLista);
 			listaSugerida = MainActivity.gerencia.sugereListaDeCompras("lista sugerida");
+			//listaSugerida = MainActivity.gerencia.getListaSugeridaDeProdutos("nome", 8);
 			
 			
 			ArrayAdapter<String> adapter = new ArrayAdapter<String>(this ,android.R.layout.simple_list_item_1 , listaSugerida.getNomeProdutos());
