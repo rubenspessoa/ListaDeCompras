@@ -1,10 +1,6 @@
 package com.projetoP2.listadecompras;
 import java.io.IOException;
-import com.projetoP2.listadecompras.library.ListaDeCompras;
-import com.projetoP2.listadecompras.library.Produto;
-import com.projetoP2.listadecompras.library.ProdutoEmKg;
-import com.projetoP2.listadecompras.library.ProdutoEmUnidade;
-
+import com.projetoP2.listadecompras.library.*;
 import android.os.Bundle;
 import android.app.*;
 import android.content.Intent;
@@ -12,7 +8,6 @@ import android.util.Log;
 import android.view.*;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.widget.*;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 

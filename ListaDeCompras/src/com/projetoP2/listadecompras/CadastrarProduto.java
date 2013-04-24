@@ -2,9 +2,7 @@ package com.projetoP2.listadecompras;
 
 import java.io.IOException;
 
-import com.projetoP2.listadecompras.library.Produto;
-import com.projetoP2.listadecompras.library.ProdutoEmKg;
-import com.projetoP2.listadecompras.library.ProdutoEmUnidade;
+import com.projetoP2.listadecompras.library.*;
 
 import android.os.Bundle;
 import android.app.Activity;

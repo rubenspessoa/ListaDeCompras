@@ -6,16 +6,10 @@ import com.projetoP2.listadecompras.library.ListaDeCompras;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.PendingIntent.OnFinished;
 import android.util.Log;
-import android.view.Menu;
-import android.view.View;
+import android.view.*;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.*;
 
 public class SugestaoLista extends Activity {
 	ListaDeCompras listaSugerida;
