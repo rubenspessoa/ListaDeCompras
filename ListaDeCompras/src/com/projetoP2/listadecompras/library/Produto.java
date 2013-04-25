@@ -109,7 +109,7 @@ public abstract class Produto implements Serializable, Calculavel, Comparable<Pr
 			Date dataFim = new Date();
 			long dataInicioArredondada = (((dataFim.getTime()/dia) - tamanhoIntervalo)*dia);
 			LinkedList<EventoDePreco> amostraEventosDePreco = new LinkedList<EventoDePreco>();
-			for(int i = this.eventosDePreco.size()-1 ; i == 0; i--){
+			for(int i = this.eventosDePreco.size()-1 ; i >= 0; i--){
 				if (this.eventosDePreco.get(i).getData().getTime()>dataInicioArredondada){
 					amostraEventosDePreco.addFirst(this.eventosDePreco.get(i));
 				}else{
@@ -125,24 +125,32 @@ public abstract class Produto implements Serializable, Calculavel, Comparable<Pr
 		 */
 		
 		private int[] getIntervalosDeCompra(){
-			if (getAmostraEventosDePreco().size() < 2){
+			int sizeEventosDePreco = getAmostraEventosDePreco().size();
+			if ( sizeEventosDePreco < 2){
+
 				int[] ArrayIntervalos = new int[1];
 				ArrayIntervalos[0] = 15; //Valor arbitrário para o caso de  não haver eventos de compra suficientes.
+
 				return ArrayIntervalos;
 			}
-			if (getAmostraEventosDePreco().size() == 2){
+			if ( sizeEventosDePreco == 2){
+
 				int[] ArrayIntervalos = new int[1];
 				int evento_corrente = (int) (getAmostraEventosDePreco().get(0).getData().getTime()/dia);
 				int evento_proximo = (int)(getAmostraEventosDePreco().get(1).getData().getTime()/dia);
 				ArrayIntervalos[0] = evento_proximo - evento_corrente;
+
 				return ArrayIntervalos;
+				
 			}else{
+
 				int[] ArrayIntervalos = new int[getAmostraEventosDePreco().size() - 1];
 				for(int i = 0 ; i == getAmostraEventosDePreco().size() -2 ; i++){
 					int evento_corrente = (int)(getAmostraEventosDePreco().get(i).getData().getTime()/dia);
 					int evento_proximo =  (int)(getAmostraEventosDePreco().get(i+1).getData().getTime()/dia);
 					ArrayIntervalos[i] = evento_proximo - evento_corrente;
 				}
+
 				return ArrayIntervalos;
 			}
 		}
@@ -174,6 +182,7 @@ public abstract class Produto implements Serializable, Calculavel, Comparable<Pr
 		        }
 		    }
 			return moda;
+			
 		}
 		/**
 		 * Método que retorna um índice usado como tendência de compra. Este índice é o número de dias que faltam

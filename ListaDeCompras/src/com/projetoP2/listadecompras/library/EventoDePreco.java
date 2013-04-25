@@ -21,7 +21,7 @@ public class EventoDePreco implements Serializable{
 
 	
 	public EventoDePreco(double valor, String estabelecimento) {
-		data = new Date();
+		this.data = new Date();
 		this.estabelecimento = estabelecimento;
 		this.valorPago = valor;
 	}	
